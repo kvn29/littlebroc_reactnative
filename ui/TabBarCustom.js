@@ -16,22 +16,39 @@ class TabBarCustom extends Component {
 
   constructor(props) {
     super(props);
-
+    this.state = {
+      currentTabBarIndex: 0
+    };
 
     var t = this.props;
   }
+  ActiveButton(index) {
+    // Méthode qui active le button quand on clique sur le bon bouton
+    console.log(index);
+    if(index === this.state.currentTabBarIndex)
+    return true;
+    else return false;
+
+  }
   setNavigatorByIndex(index) {
     this.props.main.changeNavigatorByIndex(index);
-    console.log(index);
+
+    this.setState({
+      currentTabBarIndex: index
+    });
+
+  }
+  componentDidMount() {
+    console.log('MOUNT');
   }
   render() {
     return (
           <FooterTab>
-              <Button onPress={this.setNavigatorByIndex.bind(this, 0)} active>
+              <Button onPress={this.setNavigatorByIndex.bind(this, 0)} active={this.ActiveButton.bind(this, 0)} data-test="a">
                   Ajouter
                   <Icon name='md-add' />
               </Button>
-              <Button onPress={this.setNavigatorByIndex.bind(this, 1)}>
+              <Button onPress={this.setNavigatorByIndex.bind(this, 1)} active={this.ActiveButton.bind(this, 1)} data-test="b">
                   Favoris
                   <Icon name='md-star-outline' />
               </Button>
