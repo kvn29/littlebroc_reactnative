@@ -23,15 +23,16 @@ class List_Annonces extends Component {
   }
 
   componentWillMount() {
+
     fetch('https://littlebrocapi.herokuapp.com/api/annonce').then((response) => response.json()).then((json) => {
       this.setState({
         annonces: json
       });
     });
+
   }
 
   render() {
-    var items = ['Simon Mignolet','Nathaniel Clyne','Dejan Lovren','Mama Sakho','Emre Can'];
 
     return (
       <List style={{marginTop: 60}} dataArray={this.state.annonces} renderRow={(item) =>
@@ -40,7 +41,7 @@ class List_Annonces extends Component {
         </ListItem>
         }>
       </List>
-    )
+    );
   }
 }
 // <View><Text onPress={() => {
