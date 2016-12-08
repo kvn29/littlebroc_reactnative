@@ -19,7 +19,7 @@ import {
   } from 'native-base';
 import { Router, Scene } from 'react-native-router-flux';
 
-import View1 from './ui/view1.js'
+import List_Annonces from './ui/list_annonces.js'
 import View2 from './ui/view2.js'
 
 class Navigator_Tab1 extends Component {
@@ -33,7 +33,7 @@ class Navigator_Tab1 extends Component {
     return (
       <Router>
         <Scene key="root">
-          <Scene key="pageOne" component={View1} title="PageOne" initial={true} />
+          <Scene key="pageOne" component={List_Annonces} title="PageOne" initial={true} />
           <Scene key="pageTwo" component={View2} title="PageTwo" />
         </Scene>
       </Router>

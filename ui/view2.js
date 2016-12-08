@@ -8,15 +8,9 @@ import {
 } from 'react-native';
 
 import {
-  Container,
-  Header,
-  Title,
-  Content,
-  Footer,
-  FooterTab,
-  Button,
-  Icon,
-  Badge
+  List,
+  ListItem,
+  Thumbnail
   } from 'native-base';
 
   class View2 extends Component {
@@ -27,7 +21,16 @@ import {
 
     render() {
       return (
-            <View><Text>VUE 2</Text></View>
+              <List style={{marginTop:60}}>
+                  <ListItem>
+                      <Text>Kumar Pratik</Text>
+                      <Text note>Doing what you like will always keep you happy . .</Text>
+                  </ListItem>
+                  <ListItem>
+                      <Text>Kumar Sanket</Text>
+                      <Text note>Life is one time offer! Use it well</Text>
+                  </ListItem>
+              </List>
       )
     }
   }

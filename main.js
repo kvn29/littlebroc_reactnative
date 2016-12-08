@@ -42,7 +42,11 @@ export default class test extends Component {
       this.state = {
         currentTabBarIndex: 0
       };
+
     }
+
+
+
     changeNavigatorByIndex(index) {
       // Cette méthode qui prend un index affiche le bon navigator selon
       // le bouton que l'on a touché dans la tabbar
@@ -94,8 +98,7 @@ const Styles = StyleSheet.create({
   },
   navigator: {
     width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
-    backgroundColor: 'blue'
+    height: Dimensions.get('window').height
   }
 });
 
