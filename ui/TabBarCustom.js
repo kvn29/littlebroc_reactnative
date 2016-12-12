@@ -19,48 +19,36 @@ class TabBarCustom extends Component {
     this.state = {
       currentTabBarIndex: 0
     };
-
-    var t = this.props;
   }
-  ActiveButton(index) {
-    // Méthode qui active le button quand on clique sur le bon bouton
-    console.log(index);
-    if(index === this.state.currentTabBarIndex)
-    return true;
-    else return false;
 
-  }
   setNavigatorByIndex(index) {
     this.props.main.changeNavigatorByIndex(index);
 
     this.setState({
       currentTabBarIndex: index
     });
+  }
 
-  }
-  componentDidMount() {
-    console.log('MOUNT');
-  }
   render() {
     return (
           <FooterTab>
-              <Button onPress={this.setNavigatorByIndex.bind(this, 0)} active={this.ActiveButton.bind(this, 0)} data-test="a">
+              <Button onPress={this.setNavigatorByIndex.bind(this, 0)} active={this.state.currentTabBarIndex === 0}>
                   Trouver
                   <Icon name='md-search' />
               </Button>
-              <Button onPress={this.setNavigatorByIndex.bind(this, 1)} active={this.ActiveButton.bind(this, 1)} data-test="b">
+              <Button onPress={this.setNavigatorByIndex.bind(this, 1)} active={this.state.currentTabBarIndex === 1}>
                   Favoris
                   <Icon name='md-star-outline' />
               </Button>
-              <Button onPress={this.setNavigatorByIndex.bind(this, 2)} active={this.ActiveButton.bind(this, 2)} data-test="c">
+              <Button onPress={this.setNavigatorByIndex.bind(this, 2)} active={this.state.currentTabBarIndex === 2}>
                   Ajouter
                   <Icon name='md-add' />
               </Button>
-              <Button onPress={this.setNavigatorByIndex.bind(this, 3)} active={this.ActiveButton.bind(this, 3)} data-test="d">
+              <Button onPress={this.setNavigatorByIndex.bind(this, 3)} active={this.state.currentTabBarIndex === 3}>
                   Wishlist
                   <Icon name='md-heart-outline' />
               </Button>
-              <Button onPress={this.setNavigatorByIndex.bind(this, 4)} active={this.ActiveButton.bind(this, 4)} data-test="e">
+              <Button onPress={this.setNavigatorByIndex.bind(this, 4)} active={this.state.currentTabBarIndex === 4}>
                   Profil
                   <Icon name='md-reorder' />
               </Button>

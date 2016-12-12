@@ -1,4 +1,4 @@
-// Enlève le warning lors d'un clic que un UITABBARITEM
+// Enlève le warning lors d'un clic sur un UITABBARITEM
 console.ignoredYellowBox = [
   'Animated:',
 ];
@@ -31,7 +31,6 @@ import TabBarCustom from './ui/TabBarCustom.js'
 import Navigator_search from './navigator_search.js'
 import Navigator_favoris from './navigator_favoris.js'
 import Navigator_add from './navigator_add.js'
-
 import Navigator_setting from './navigator_setting.js'
 
 export default class test extends Component {
