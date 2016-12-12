@@ -16,13 +16,12 @@ import {
   Button,
   Icon,
   Badge
-  } from 'native-base';
+} from 'native-base';
 import { Router, Scene } from 'react-native-router-flux';
 
-import List_Annonces from './ui/list_annonces.js'
-import View2 from './ui/view2.js'
+import favoris from './ui/favoris.js'
 
-class Navigator_Tab1 extends Component {
+class Navigator_favoris extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,12 +32,11 @@ class Navigator_Tab1 extends Component {
     return (
       <Router>
         <Scene key="root">
-          <Scene key="pageOne" component={List_Annonces} title="PageOne" initial={true} />
-          <Scene key="pageTwo" component={View2} title="PageTwo" />
+          <Scene key="favoris" component={favoris} title="Favoris" initial={true} />
         </Scene>
       </Router>
-    )
+    );
   }
 }
 
-module.exports = Navigator_Tab1;
+module.exports = Navigator_favoris;

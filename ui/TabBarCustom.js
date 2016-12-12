@@ -45,22 +45,22 @@ class TabBarCustom extends Component {
     return (
           <FooterTab>
               <Button onPress={this.setNavigatorByIndex.bind(this, 0)} active={this.ActiveButton.bind(this, 0)} data-test="a">
-                  Ajouter
-                  <Icon name='md-add' />
+                  Trouver
+                  <Icon name='md-search' />
               </Button>
               <Button onPress={this.setNavigatorByIndex.bind(this, 1)} active={this.ActiveButton.bind(this, 1)} data-test="b">
                   Favoris
                   <Icon name='md-star-outline' />
               </Button>
-              <Button onPress={this.setNavigatorByIndex.bind(this, 2)}>
-                  Trouver
-                  <Icon name='md-search' />
+              <Button onPress={this.setNavigatorByIndex.bind(this, 2)} active={this.ActiveButton.bind(this, 2)} data-test="c">
+                  Ajouter
+                  <Icon name='md-add' />
               </Button>
-              <Button onPress={this.setNavigatorByIndex.bind(this, 3)}>
+              <Button onPress={this.setNavigatorByIndex.bind(this, 3)} active={this.ActiveButton.bind(this, 3)} data-test="d">
                   Wishlist
                   <Icon name='md-heart-outline' />
               </Button>
-              <Button onPress={this.setNavigatorByIndex.bind(this, 4)}>
+              <Button onPress={this.setNavigatorByIndex.bind(this, 4)} active={this.ActiveButton.bind(this, 4)} data-test="e">
                   Profil
                   <Icon name='md-reorder' />
               </Button>
