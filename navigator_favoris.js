@@ -19,7 +19,7 @@ import {
 } from 'native-base';
 import { Router, Scene } from 'react-native-router-flux';
 
-import favoris from './ui/favoris.js'
+import favoris from './ui/listAnnounces.js'
 
 class Navigator_favoris extends Component {
   constructor(props) {
