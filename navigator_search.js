@@ -19,7 +19,8 @@ import {
   } from 'native-base';
 import { Router, Scene } from 'react-native-router-flux';
 
-import search from './ui/search.js'
+import home from './ui/listAnnounces.js'
+import announce from './ui/announce.js'
 
 class Navigator_search extends Component {
   constructor(props) {
@@ -32,7 +33,8 @@ class Navigator_search extends Component {
     return (
       <Router>
         <Scene key="root">
-          <Scene key="search" component={search} title="My Little Broc" initial={true} />
+          <Scene key="home" component={home} title="My Little Broc" initial={true} />
+          <Scene key="announce" component={announce} title="Annonces" />
         </Scene>
       </Router>
     )
