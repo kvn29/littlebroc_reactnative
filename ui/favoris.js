@@ -44,7 +44,7 @@ import {
 
     render() {
       return (
-        <View style={{marginTop:55}}>
+        <View style={{marginTop:62}}>
         <Picker
             iosHeader="Filtres"
             mode="dropdown"
