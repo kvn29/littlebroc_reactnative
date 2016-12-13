@@ -34,7 +34,7 @@ class Navigator_search extends Component {
       <Router>
         <Scene key="root">
           <Scene key="announce" component={announce} title="Annonce" initial={true} />
-          <Scene key="categories" component={categories} title="Catégories" />
+          <Scene key="categories" component={categories} title="Catégories" typeList="checkbox"/>
         </Scene>
       </Router>
     )

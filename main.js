@@ -57,7 +57,7 @@ export default class test extends Component {
     render() {
         return (
           <Container >
-            <Content style={Styles.content} scrollEnabled={true}>
+            <Content style={Styles.content} bounces={false}>
                 <Navigator
                   initialRoute={{title: 'Titre', index: 0 }}
                   renderScene={(route, navigator) => {
@@ -97,12 +97,12 @@ export default class test extends Component {
 const Styles = StyleSheet.create({
   content: {
     width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height-200,
-    backgroundColor: 'black'
+    height: Dimensions.get('window').height,
+    backgroundColor: 'red'
   },
   navigator: {
     width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height
+    height: Dimensions.get('window').height-55
   }
 });
 

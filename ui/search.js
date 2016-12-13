@@ -43,7 +43,8 @@ import { Actions } from 'react-native-router-flux';
 
     render() {
       return (//{title: 'Second Scene', index: 1}
-      <Content style={{marginTop: 60}}>
+
+      <Content style={{marginTop: 62}}>
 <InputGroup searchBar rounded>
  <Icon name="ios-search" />
  <Input placeholder="Entrer un mot-clé"/>
