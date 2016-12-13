@@ -15,68 +15,72 @@ import {
   Icon,
   Input,
   CheckBox,
+  Radio,
   Button
   } from 'native-base';
+
+  import { Actions } from 'react-native-router-flux';
+  var test = require('../data/categoryData.js');
+
 
   class categories extends Component {
 
     constructor(props) {
       super(props);
       this.state = {
-      checkbox1: false,
-      checkbox2: false,
-      checkbox3: false,
-      checkbox4: false,
-};
+        typeList: props.navigationState.typeList,
+        checkbox: false,
+        radio: false,
+        category: test.category
+      };
+
     }
-    toggleSwitch1() {
+
+  toggleSwitch() {
     this.setState({
-      checkbox1: !this.state.checkbox1,
+      checkbox: !this.state.checkbox
     });
   }
 
-  toggleSwitch2() {
+  toggleRadio() {
     this.setState({
-      checkbox2: !this.state.checkbox2,
-    });
+      radio: !this.state.radio
+    })
   }
 
-  toggleSwitch3() {
-    this.setState({
-      checkbox3: !this.state.checkbox3,
-    });
+  componentWillMount() {
+    this.forceUpdate();
   }
-
-  toggleSwitch4() {
-    this.setState({
-      checkbox4: !this.state.checkbox4,
-    });
-}
 
     render() {
-      return (
-        <View style={{marginTop:55}}>
-          <List>
-            <ListItem button onPress={() => this.toggleSwitch1()}>
-              <CheckBox checked={this.state.checkbox1} onPress={() => this.toggleSwitch1()} />
-              <Text>Livre</Text>
-            </ListItem>
-            <ListItem button onPress={() => this.toggleSwitch2()}>
-              <CheckBox checked={this.state.checkbox2} onPress={() => this.toggleSwitch2()} />
-              <Text>Vaisselle</Text>
-            </ListItem>
-            <ListItem button onPress={() => this.toggleSwitch3()}>
-              <CheckBox checked={this.state.checkbox3} onPress={() => this.toggleSwitch3()} />
-              <Text>Vêtements</Text>
-            </ListItem>
-            <ListItem button onPress={() => this.toggleSwitch4()}>
-              <CheckBox checked={this.state.checkbox4} onPress={() => this.toggleSwitch4()} />
-              <Text>Meuble</Text>
-            </ListItem>
-          </List>
-      <Button style={{marginTop:5, alignSelf: 'center'}}>Valider</Button>
-      </View>
-      )
+      if(this.state.typeList == "checkbox") {
+        return (
+          <View style={{marginTop:60}} >
+            <List dataArray={this.state.category} renderRow={(item)=>
+              <ListItem button onPress={this.toggleSwitch.bind(this)}>
+                <CheckBox checked={this.state.checkbox === true} />
+                <Text>{item}</Text>
+              </ListItem>
+                }>
+            </List>
+        <Button style={{marginTop:5, alignSelf: 'center'}}>Valider</Button>
+        </View>
+        )
+      }
+      else {
+        return (
+          <View style={{marginTop:60}} >
+            <List dataArray={this.state.category} renderRow={(item)=>
+              <ListItem button on Press={this.toggleRadio.bind(this)}>
+                <Radio selected={this.state.radio === true} />
+                <Text>{item}</Text>
+              </ListItem>
+              }>
+            </List>
+          <Button style={{marginTop:5, alignSelf: 'center'}}>Valider</Button>
+          </View>
+        );
+      }
     }
   }
 
