@@ -32,7 +32,7 @@ import { Actions } from 'react-native-router-flux';
 
     render() {
       return (//{title: 'Second Scene', index: 1}
-        <Content searchBar rounded style={{marginTop: 60}}>
+        <Content searchBar rounded style={{marginTop: 62}}>
           <InputGroup searchBar rounded> <Icon name="ios-search" />
             <Input placeholder="Recherche sur My Little Broc" />
           </InputGroup>
