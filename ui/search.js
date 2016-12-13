@@ -49,26 +49,18 @@ import { Actions } from 'react-native-router-flux';
  <Icon name="ios-search" />
  <Input placeholder="Entrer un mot-clé"/>
 </InputGroup>
-<Button style={{width: 120,height:50, alignSelf: 'center', margin: 10}}  block rounded >
- Recherche rapide
-</Button>
-<Button iconRight onPress={Actions.categories}>
+
+<Button style={styles.buttonToNextVue}  iconRight onPress={Actions.categories}>
     <Icon name='ios-arrow-forward'/>
     Catégorie
 </Button>
-<Button iconRight onPress={Actions.typeBrocante}>
+
+<Button style={styles.buttonToNextVue}  iconRight onPress={Actions.typeBrocante}>
        <Icon name='ios-arrow-forward'/>
     Type de brocante
-   </Button>
-   <InputGroup searchBar rounded>
-     <Icon name="ios-search" />
-     <Input placeholder="Saisir le CP ou la ville" />
-   </InputGroup>
-   <Text>Date <Icon name="ios-calendar"/></Text>
-   <ListItem button onPress={() => this.toggleRadio1()} >
-               <Radio selected={this.state.radio1} onPress={() => this.toggleRadio1()} />
-               <Text>Ajouter les critéres à ma Wishlist</Text>
-   </ListItem>
+</Button>
+
+
    <Button style={{width: 110, alignSelf: 'center', marginTop: 10}}  block rounded >
     Rechercher
    </Button>
@@ -76,6 +68,20 @@ import { Actions } from 'react-native-router-flux';
       )
     }
   }
+  const styles = StyleSheet.create({
+  buttonToNextVue: {
+    marginBottom: 5,
+    borderRadius: 0,
+    backgroundColor:  '#376092',
+    alignSelf: 'stretch',
+
+
+
+  },
+  red: {
+    color: 'red',
+  },
+});
   // <View><Text onPress={() => {
   //   this.props.navigator.push({title: 'Second Scene', index: 1});
   // }}>VUE 1</Text></View>
