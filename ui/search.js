@@ -42,8 +42,7 @@ import { Actions } from 'react-native-router-flux';
 
 
     render() {
-      return (//{title: 'Second Scene', index: 1}
-<<<<<<< HEAD
+      return (
         <Content searchBar rounded style={{marginTop: 62}}>
           <InputGroup searchBar rounded> <Icon name="ios-search" />
             <Input placeholder="Recherche sur My Little Broc" />
@@ -52,58 +51,34 @@ import { Actions } from 'react-native-router-flux';
           <Grid>
             <Col>
               <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
-              <Text style={{color: 'white', alignSelf: 'center'}}>Table</Text>
-              <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 20 €</Text>
+                <Text style={{color: 'white', alignSelf: 'center'}}>Table</Text>
+                <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 20 €</Text>
               </View>
               <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
-              <Text style={{color: 'white', alignSelf: 'center'}}>Dictionnaire</Text>
-              <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 10 €</Text>
+                <Text style={{color: 'white', alignSelf: 'center'}}>Dictionnaire</Text>
+                <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 10 €</Text>
               </View>
               <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
-              <Text style={{color: 'white', alignSelf: 'center'}}>CD ACDC</Text>
-              <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 40 €</Text>
+                <Text style={{color: 'white', alignSelf: 'center'}}>CD ACDC</Text>
+                <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 40 €</Text>
               </View>
             </Col>
             <Col>
               <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
-              <Text style={{color: 'white', alignSelf: 'center'}}>Blouson en Cuir</Text>
-              <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 60 €</Text>
+                <Text style={{color: 'white', alignSelf: 'center'}}>Blouson en Cuir</Text>
+                <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 60 €</Text>
               </View>
               <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
-              <Text style={{color: 'white', alignSelf: 'center'}}>Assiettes</Text>
-              <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 5 €</Text>
+                <Text style={{color: 'white', alignSelf: 'center'}}>Assiettes</Text>
+                <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 5 €</Text>
               </View>
               <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
-              <Text style={{color: 'white', alignSelf: 'center'}}>Benzai</Text>
-              <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 43 €</Text>
+                <Text style={{color: 'white', alignSelf: 'center'}}>Benzai</Text>
+                <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 43 €</Text>
               </View>
             </Col>
           </Grid>
         </Content>
-=======
-
-      <Content style={{marginTop: 62}}>
-<InputGroup searchBar rounded>
- <Icon name="ios-search" />
- <Input placeholder="Entrer un mot-clé"/>
-</InputGroup>
-
-<Button style={styles.buttonToNextVue}  iconRight onPress={Actions.categories}>
-    <Icon name='ios-arrow-forward'/>
-    Catégorie
-</Button>
-
-<Button style={styles.buttonToNextVue}  iconRight onPress={Actions.typeBrocante}>
-       <Icon name='ios-arrow-forward'/>
-    Type de brocante
-</Button>
-
-
-   <Button style={{width: 110, alignSelf: 'center', marginTop: 10}}  block rounded >
-    Rechercher
-   </Button>
-</Content>
->>>>>>> f40c3ef1c49a567f7415f315f7f485a1e92e3706
       )
     }
   }
