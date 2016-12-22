@@ -60,34 +60,34 @@ import {
         </Picker>
         <Grid>
           <Col>
-            <View style={{maxWidth: 200, height: 180, backgroundColor: 'blue', margin: 2}}>
+            <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
             <Text style={{color: 'white', alignSelf: 'center'}}>Table</Text>
             <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 20 €</Text>
             <Icon style={{alignSelf: 'center'}} name='ios-remove-circle-outline' />
             </View>
-            <View style={{maxWidth: 200, height: 180, backgroundColor: 'blue', margin: 2}}>
+            <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
             <Text style={{color: 'white', alignSelf: 'center'}}>Dictionnaire</Text>
             <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 10 €</Text>
             <Icon style={{alignSelf: 'center'}} name='ios-remove-circle-outline' />
             </View>
-            <View style={{maxWidth: 200, height: 180, backgroundColor: 'blue', margin: 2}}>
+            <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
             <Text style={{color: 'white', alignSelf: 'center'}}>CD ACDC</Text>
             <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 40 €</Text>
             <Icon style={{alignSelf: 'center'}} name='ios-remove-circle-outline' />
             </View>
           </Col>
           <Col>
-            <View style={{maxWidth: 200, height: 180, backgroundColor: 'blue', margin: 2}}>
+            <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
             <Text style={{color: 'white', alignSelf: 'center'}}>Blouson en Cuir</Text>
             <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 60 €</Text>
             <Icon style={{alignSelf: 'center'}} name='ios-remove-circle-outline' />
             </View>
-            <View style={{maxWidth: 200, height: 180, backgroundColor: 'blue', margin: 2}}>
+            <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
             <Text style={{color: 'white', alignSelf: 'center'}}>Assiettes</Text>
             <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 5 €</Text>
             <Icon style={{alignSelf: 'center'}} name='ios-remove-circle-outline' />
             </View>
-            <View style={{maxWidth: 200, height: 180, backgroundColor: 'blue', margin: 2}}>
+            <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
             <Text style={{color: 'white', alignSelf: 'center'}}>Benzai</Text>
             <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 43 €</Text>
             <Icon style={{alignSelf: 'center'}} name='ios-remove-circle-outline' />

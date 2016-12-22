@@ -47,7 +47,7 @@ const profil = require('../img/Pierre_Girard.jpg');
         <Thumbnail square size={80} iconRight source={profil}/>
         <Icon name='ios-chatbubbles' onPress={Actions.messages}/>
           <Text>PierreG</Text>
-          <Text note>Bonjour, il fait beau chez vous ?</Text>
+          <Text note>Bonjour, il fait beau chez vous ?</Text> 
         </ListItem>
         <ListItem>
         <Thumbnail square size={80} iconRight source={profil}/>
