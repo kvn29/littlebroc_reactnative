@@ -12,6 +12,8 @@ import {
   Badge
   } from 'native-base';
 
+import myTheme from '../Themes/mytheme';
+
 class TabBarCustom extends Component {
 
   constructor(props) {
@@ -31,7 +33,7 @@ class TabBarCustom extends Component {
 
   render() {
     return (
-          <FooterTab>
+          <FooterTab theme={myTheme}>
               <Button onPress={this.setNavigatorByIndex.bind(this, 0)} active={this.state.currentTabBarIndex === 0}>
                   Trouver
                   <Icon name='md-search' />
