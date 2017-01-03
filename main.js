@@ -3,7 +3,6 @@ console.ignoredYellowBox = [
   'Animated:',
 ];
 
-
 import Dimensions from 'Dimensions';
 import React, { Component } from 'react';
 import {

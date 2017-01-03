@@ -20,6 +20,7 @@ import {
 import { Router, Scene } from 'react-native-router-flux';
 
 import favoris from './ui/listAnnounces.js'
+import announce from './ui/announce.js'
 
 class Navigator_favoris extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class Navigator_favoris extends Component {
       <Router>
         <Scene key="root">
           <Scene key="favoris" component={favoris} title="Favoris" initial={true} />
+          <Scene key="announce" component={announce} title="Annonce" />
         </Scene>
       </Router>
     );
