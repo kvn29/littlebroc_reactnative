@@ -37,32 +37,49 @@ const profil = require('../img/Pierre_Girard.jpg');
 
     render() {
       return (//{title: 'Second Scene', index: 1}
-        <Content style={{marginTop: 55}} >
-        <List>
-          <ListItem>
-            <Thumbnail square size={80} source={profil}/>
-            <Text>PierreG</Text>
-          </ListItem>
-          <InputGroup borderType='regular' iconRight disabled>
-            <Icon name='ios-contact' onPress={Actions.profil}/>
-            <Input placeholder='Mon profil' />
-          </InputGroup>
-          <InputGroup borderType='regular' iconRight disabled>
-            <Icon name='ios-list-box' onPress={Actions.myAnnounce}/>
-            <Input placeholder='Mes annonces' />
-          </InputGroup>
-          <InputGroup borderType='regular' iconRight disabled>
-            <Icon name='ios-chatbubbles' onPress={Actions.messages}/>
-            <Input placeholder='Mes messages' />
-          </InputGroup>
-          <InputGroup borderType='regular' iconRight disabled>
-            <Icon name='ios-print'/>
-            <Input placeholder='Imprimer une bannière' />
-          </InputGroup>
-          </List>
+        <Content style={styles.margin}>
+          <InputGroup>
+             <Icon name="ios-search" />
+             <Input placeholder="Search" />
+             <Icon name="ios-people" />
+           </InputGroup>
+           <View style={styles.test}>
+           <Button style={styles.centerBtn} onPress={Actions.profil}>
+          <Icon name='ios-contact'/>
+            <Text style={styles.txtParams}>Mon profil</Text>
+           </Button>
+           <Button style={styles.centerBtn} onPress={Actions.myAnnounce}>
+             <Icon name="ios-photos"/>
+             <Text>Mes annonces</Text>
+           </Button>
+           <Button style={styles.centerBtn} onPress={Actions.messages}>
+             <Icon name="ios-mail"/>
+             <Text>Mes messages</Text>
+           </Button>
+           <Button style={styles.centerBtn} >
+             Imprimer une bannière
+           </Button>
+           </View>
         </Content>
-      )
-    }
-  }
 
-  module.exports = setting;
+        )
+      }
+    }
+    const styles = StyleSheet.create({
+      margin: {
+      marginTop: 20
+      },
+      test: {
+          alignSelf: 'center'
+      },
+      centerBtn: {
+    alignSelf: 'center',
+    marginTop: 20,
+    width: 200
+  },
+  txtParams : {
+
+
+  }
+    });
+    module.exports = setting;

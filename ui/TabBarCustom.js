@@ -51,7 +51,7 @@ class TabBarCustom extends Component {
                   <Icon name='md-heart-outline' />
               </Button>
               <Button onPress={this.setNavigatorByIndex.bind(this, 4)} active={this.state.currentTabBarIndex === 4}>
-                  Profil
+                  Paramètre
                   <Icon name='md-reorder' />
               </Button>
           </FooterTab>
