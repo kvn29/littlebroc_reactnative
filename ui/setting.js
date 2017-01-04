@@ -25,6 +25,9 @@ import {
   ListItem,
   Thumbnail
   } from 'native-base';
+
+import myTheme from '../Themes/mytheme';
+
 import { Actions } from 'react-native-router-flux';
 
 const profil = require('../img/Pierre_Girard.jpg');
@@ -43,7 +46,7 @@ const profil = require('../img/Pierre_Girard.jpg');
              <Input placeholder="Search" />
              <Icon name="ios-people" />
            </InputGroup>
-           <View style={styles.test}>
+           <View style={styles.center}>
            <Button style={styles.centerBtn} onPress={Actions.profil}>
           <Icon name='ios-contact'/>
             <Text style={styles.txtParams}>Mon profil</Text>
@@ -57,7 +60,8 @@ const profil = require('../img/Pierre_Girard.jpg');
              <Text>Mes messages</Text>
            </Button>
            <Button style={styles.centerBtn} >
-             Imprimer une bannière
+             <Icon name="ios-print"/>
+             <Text>Votre bannière</Text>
            </Button>
            </View>
         </Content>
@@ -66,20 +70,17 @@ const profil = require('../img/Pierre_Girard.jpg');
       }
     }
     const styles = StyleSheet.create({
-      margin: {
-      marginTop: 20
+          margin: {
+          marginTop: 20
       },
-      test: {
+      center: {
           alignSelf: 'center'
       },
       centerBtn: {
-    alignSelf: 'center',
-    marginTop: 20,
-    width: 200
+          alignSelf: 'center',
+          marginTop: 20,
+          width: 200,
+          backgroundColor: '#00ffcc'
   },
-  txtParams : {
-
-
-  }
     });
     module.exports = setting;
