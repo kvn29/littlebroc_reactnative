@@ -205,7 +205,7 @@ export default {
 
 
     // Text
-    textColor: '#000',
+    textColor: '#376092',
     inverseTextColor: '#fff',
 
 
@@ -216,7 +216,7 @@ export default {
 
 
     // Other
-    borderRadiusBase: (Platform.OS === 'ios' ) ? 5 : 2,
+    borderRadiusBase: (Platform.OS === 'ios' ) ? 5 : 5,
     borderWidth: 1,
     contentPadding: 10,
 

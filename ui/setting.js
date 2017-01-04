@@ -28,6 +28,9 @@ import {
   Card,
   CardItem
   } from 'native-base';
+
+import myTheme from '../Themes/mytheme';
+
 import { Actions } from 'react-native-router-flux';
 
   class setting extends Component {
@@ -72,7 +75,7 @@ import { Actions } from 'react-native-router-flux';
              <Icon name="ios-mail"/>
              <Text>Mes messages</Text>
            </Button>
-           <Button style={styles.centerBtn}>
+           <Button style={styles.centerBtn} >
              <Icon name="ios-print"/>
              <Text>Votre bannière</Text>
            </Button>
