@@ -4,7 +4,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Navigator
+  Navigator,
+  Image
 } from 'react-native';
 
 import {
@@ -23,27 +24,45 @@ import {
   Col,
   List,
   ListItem,
-  Thumbnail
+  Thumbnail,
+  Card,
+  CardItem
   } from 'native-base';
+
 import { Actions } from 'react-native-router-flux';
 
-const profil = require('../img/Pierre_Girard.jpg');
+import myTheme from '../Themes/myTheme';
 
   class setting extends Component {
 
     constructor(props) {
       super(props);
+      this.state = {
+        annonces: [],
+        annonce: {}
+      };
     }
-
+    componentWillMount() {
+      fetch('https://littlebrocapi.herokuapp.com/api/member/58306e8982d1ce72659838d5').then((response) => response.json()).then((json) => {
+        this.setState({
+          annonce: json
+        });
+      });
+    }
     render() {
       return (//{title: 'Second Scene', index: 1}
         <Content style={styles.margin}>
-          <InputGroup>
-             <Icon name="ios-search" />
-             <Input placeholder="Search" />
-             <Icon name="ios-people" />
-           </InputGroup>
-           <View style={styles.test}>
+          <Card contentContainerStyle={styles.list} style={{marginTop: 60}} dataArray={this.state.annonces} renderRow={(item) =>
+            <CardItem style={styles.item} onPress={this.openAnnounce}>
+              <Image style={{ resizeMode: 'cover', width: null }} source={{uri : item.photoUrl}}>
+              <Text id="id" >{item._id}</Text>
+              <Text>{item.annonceTitle}</Text>
+              <Text>{item.annoncePrice} €</Text>
+              </Image>
+            </CardItem>
+            }>
+          </Card>
+           <View style={styles.center} >
            <Button style={styles.centerBtn} onPress={Actions.profil}>
           <Icon name='ios-contact'/>
             <Text style={styles.txtParams}>Mon profil</Text>
@@ -57,7 +76,8 @@ const profil = require('../img/Pierre_Girard.jpg');
              <Text>Mes messages</Text>
            </Button>
            <Button style={styles.centerBtn} >
-             Imprimer une bannière
+             <Icon name="ios-print"/>
+             <Text>Votre bannière</Text>
            </Button>
            </View>
         </Content>
@@ -67,19 +87,16 @@ const profil = require('../img/Pierre_Girard.jpg');
     }
     const styles = StyleSheet.create({
       margin: {
-      marginTop: 20
+        marginTop: 70,
       },
-      test: {
-          alignSelf: 'center'
+      center: {
+        alignSelf: 'center'
       },
       centerBtn: {
-    alignSelf: 'center',
-    marginTop: 20,
-    width: 200
+        alignSelf: 'center',
+        marginTop: 20,
+        width: 200,
+        backgroundColor:  '#376092',
   },
-  txtParams : {
-
-
-  }
     });
     module.exports = setting;

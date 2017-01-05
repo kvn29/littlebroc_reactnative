@@ -12,7 +12,7 @@ import {
   Badge
   } from 'native-base';
 
-import myTheme from '../Themes/mytheme';
+import myTheme from '../Themes/myTheme';
 
 class TabBarCustom extends Component {
 
