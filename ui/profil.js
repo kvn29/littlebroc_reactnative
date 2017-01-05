@@ -42,8 +42,8 @@ const profilPhoto = require('../img/Pierre_Girard.jpg');
       <View style={{marginTop:55}}>
         <List>
         <ListItem>
-          <Thumbnail square size={80} source={profilPhoto}/>
-          <Text style={{color:'#376092', marginTop:30}}>PierreG</Text>
+          <Thumbnail square size={100} source={profilPhoto} style={{marginTop:10}}/>
+          <Text style={{color:'#376092', fontWeight: 'bold', marginTop:30}}>PierreG</Text>
         </ListItem>
         <InputGroup borderType='regular'>
           <Input inlineLabel label="Nom" placeholder='Girard' />

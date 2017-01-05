@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry, TextInput, Text, View, Button } from 'react-native';
+import myTheme from '../Themes/myTheme';
 
 class login extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class login extends Component {
 
   render() {
     return (
+    <Content theme={myTheme}>
       <View style={{marginTop:55}}>
         <TextInput onChangeText={(lastName) => this.setState({lastName})} value={this.state.lastName} placeholder='Votre nom' />
         <TextInput onChangeText={(firstName) => this.setState({firstName})} value={this.state.firstName} placeholder='Votre prénom' />
@@ -40,6 +42,7 @@ class login extends Component {
         <TextInput onChangeText={(password) => this.setState({password})} value={this.state.password} placeholder='Votre mot de passe' />
         <Button title="Valider" onPress={() => this.newUser(this.state)} />
       </View>
+    </Content>
     );
   }
 }
