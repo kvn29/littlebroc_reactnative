@@ -127,7 +127,7 @@ export default {
     toolbarIconSize: (Platform.OS === 'ios' ) ? 20 : 22,
     toolbarInputColor: '#CECDD2',
     toolbarInverseBg: '#222',
-    toolbarTextColor: (Platform.OS==='ios') ? '#000' : '#fff',
+    toolbarTextColor: (Platform.OS==='ios') ? '#376092' : '#376092',
     get statusBarColor() {
         return Color(this.toolbarDefaultBg).darken(0.2).hexString();
     },
@@ -141,15 +141,15 @@ export default {
 
     // InputGroup
     inputFontSize: 15,
-    inputBorderColor: '#D9D5DC',
-    inputSuccessBorderColor: '#2b8339',
+    inputBorderColor: '#d7d7d7',
+    inputSuccessBorderColor: '#00ffcc',
     inputErrorBorderColor: '#ed2f2f',
 
     get inputColor () {
         return this.textColor;
     },
     get inputColorPlaceholder () {
-        return '#575757';
+        return '#376092';
     },
 
     inputGroupMarginBottom: 10,
@@ -171,11 +171,11 @@ export default {
 
 
     // List
-    listBorderColor: '#ddd',
-    listDividerBg: '#ddd',
+    listBorderColor: '#376092',
+    listDividerBg: '#376092',
     listItemHeight: 45,
     listItemPadding: (Platform.OS === 'ios' ) ? 12 : 16,
-    listNoteColor: '#808080',
+    listNoteColor: '#376092',
     listNoteSize: 13,
 
 
@@ -201,12 +201,12 @@ export default {
     // Tabs
     tabBgColor: '#F8F8F8',
     tabFontSize: 15,
-    tabTextColor: '#222222',
+    tabTextColor: '#376092',
 
 
     // Text
     textColor: '#376092',
-    inverseTextColor: '#fff',
+    inverseTextColor: '#d7d7d7',
 
 
     // Title

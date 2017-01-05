@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Navigator, Image } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Icon, Badge, InputGroup, Input } from 'native-base';
 import { Actions } from 'react-native-router-flux';
+import myTheme from '../Themes/myTheme';
 
 class announce extends Component {
 

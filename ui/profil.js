@@ -23,6 +23,9 @@ import {
   ListItem,
   Thumbnail
   } from 'native-base';
+
+import myTheme from '../Themes/myTheme';
+
 import { Actions } from 'react-native-router-flux';
 
 const profilPhoto = require('../img/Pierre_Girard.jpg');
@@ -35,11 +38,12 @@ const profilPhoto = require('../img/Pierre_Girard.jpg');
 
     render() {
       return (//{title: 'Second Scene', index: 1}
+      <Content theme={myTheme}>
       <View style={{marginTop:55}}>
         <List>
         <ListItem>
           <Thumbnail square size={80} source={profilPhoto}/>
-          <Text>PierreG</Text>
+          <Text style={{color:'#376092', marginTop:30}}>PierreG</Text>
         </ListItem>
         <InputGroup borderType='regular'>
           <Input inlineLabel label="Nom" placeholder='Girard' />
@@ -64,6 +68,7 @@ const profilPhoto = require('../img/Pierre_Girard.jpg');
         </InputGroup>
         </List>
       </View>
+    </Content>
 
       )
     }
@@ -71,4 +76,5 @@ const profilPhoto = require('../img/Pierre_Girard.jpg');
   // <View><Text onPress={() => {
   //   this.props.navigator.push({title: 'Second Scene', index: 1});
   // }}>VUE 1</Text></View>
+
   module.exports = profil;

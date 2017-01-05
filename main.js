@@ -23,7 +23,7 @@ import {
   Icon,
   Badge
   } from 'native-base';
-
+import myTheme from './Themes/myTheme';
 
 import TabBarCustom from './ui/TabBarCustom.js'
 
@@ -55,8 +55,8 @@ export default class test extends Component {
     }
     render() {
         return (
-          <Container >
-            <Content style={Styles.content} bounces={false}>
+          <Container theme={myTheme}>
+            <Content  style={Styles.content} bounces={false}>
                 <Navigator
                   initialRoute={{title: 'Titre', index: 0 }}
                   renderScene={(route, navigator) => {
