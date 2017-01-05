@@ -1,30 +1,45 @@
 import React, { Component } from 'react';
-import { AppRegistry, TextInput, Text, View } from 'react-native';
+import { AppRegistry, TextInput, Text, View, Button } from 'react-native';
 
 class login extends Component {
   constructor(props) {
     super(props);
-    this.state = { id : {text: 'Useless Placeholder' }};
+    this.state = {
+      lastName : "",
+      firstName : "",
+      email : "",
+      phone : "",
+      password : ""
+    };
   }
 
-  update(text){
-    this.setState((id) => {
-      return {
-        text: text
-      };
-    });
-  }
+  newUser(user) {
+      fetch('https://littlebrocapi.herokuapp.com/api/member/', {
+      	method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+      	body: JSON.stringify({
+          lastName : user.lastName,
+          firstName : user.firstName,
+          email : user.email,
+          phone: user.phone,
+          password: user.password
+        })
+      })
+    }
 
   render() {
     return (
-      <View>
-      <TextInput
-        style={{height: 40, borderColor: 'gray', borderWidth: 1, marginTop:55}}
-        onChangeText={(text) => this.update({text})}
-        value={this.state.id.text}
-      />
-    <Text>{this.state.id.text}</Text>
-    </View>
+      <View style={{marginTop:55}}>
+        <TextInput onChangeText={(lastName) => this.setState({lastName})} value={this.state.lastName} placeholder='Votre nom' />
+        <TextInput onChangeText={(firstName) => this.setState({firstName})} value={this.state.firstName} placeholder='Votre prénom' />
+        <TextInput onChangeText={(email) => this.setState({email})} value={this.state.email} placeholder='Votre e-mail' />
+        <TextInput onChangeText={(phone) => this.setState({phone})} value={this.state.phone} placeholder='Votre numéro de téléphone' />
+        <TextInput onChangeText={(password) => this.setState({password})} value={this.state.password} placeholder='Votre mot de passe' />
+        <Button title="Valider" onPress={() => this.newUser(this.state)} />
+      </View>
     );
   }
 }
