@@ -73,7 +73,7 @@ export default {
 
 
     // Check Box
-    checkboxBgColor: '#039BE5',
+    checkboxBgColor: '#00ffcc',
     checkboxSize: 23,
     checkboxTickColor: '#fff',
 
@@ -104,16 +104,16 @@ export default {
 
     // Footer
     footerHeight: 55,
-    footerDefaultBg: (Platform.OS === 'ios' ) ? '#F8F8F8' : '#376092',
+    footerDefaultBg: (Platform.OS === 'ios' ) ? '#d7d7d7' : '#376092',
 
 
     //FooterTab
-    tabBarTextColor: (Platform.OS === 'ios' ) ? '#7f7f7f' : '#fff',
+    tabBarTextColor: (Platform.OS === 'ios' ) ? '#7f7f7f' : '#d7d7d7',
     tabBarActiveTextColor: (Platform.OS === 'ios' ) ? '#376092' : '#00ffcc',
-    tabActiveBgColor: (Platform.OS=='ios') ? '#00ffcc' : undefined,
+    tabActiveBgColor: (Platform.OS=='ios') ? '#00ffcc' : '#00ffcc',
 
     //Tab
-    tabDefaultBg: (Platform.OS === 'ios' ) ? '#F8F8F8' : '#376092',
+    tabDefaultBg: (Platform.OS === 'ios' ) ? '#7f7f7f' : '#376092',
     topTabBarTextColor: (Platform.OS === 'ios' ) ? '#6b6b6b' : '#b3c7f9',
     topTabBarActiveTextColor: (Platform.OS === 'ios' ) ? '#007aff' : '#fff',
     topTabActiveBgColor: (Platform.OS=='ios') ? '#cde1f9' : undefined,
@@ -127,7 +127,7 @@ export default {
     toolbarIconSize: (Platform.OS === 'ios' ) ? 20 : 22,
     toolbarInputColor: '#CECDD2',
     toolbarInverseBg: '#222',
-    toolbarTextColor: (Platform.OS==='ios') ? '#000' : '#fff',
+    toolbarTextColor: (Platform.OS==='ios') ? '#376092' : '#376092',
     get statusBarColor() {
         return Color(this.toolbarDefaultBg).darken(0.2).hexString();
     },
@@ -141,15 +141,15 @@ export default {
 
     // InputGroup
     inputFontSize: 15,
-    inputBorderColor: '#D9D5DC',
-    inputSuccessBorderColor: '#2b8339',
+    inputBorderColor: '#d7d7d7',
+    inputSuccessBorderColor: '#00ffcc',
     inputErrorBorderColor: '#ed2f2f',
 
     get inputColor () {
         return this.textColor;
     },
     get inputColorPlaceholder () {
-        return '#575757';
+        return '#376092';
     },
 
     inputGroupMarginBottom: 10,
@@ -171,11 +171,11 @@ export default {
 
 
     // List
-    listBorderColor: '#ddd',
-    listDividerBg: '#ddd',
+    listBorderColor: '#376092',
+    listDividerBg: '#376092',
     listItemHeight: 45,
     listItemPadding: (Platform.OS === 'ios' ) ? 12 : 16,
-    listNoteColor: '#808080',
+    listNoteColor: '#376092',
     listNoteSize: 13,
 
 
@@ -186,7 +186,7 @@ export default {
 
     // Radio Button
     radioBtnSize: (Platform.OS === 'ios') ? 25 : 23,
-    radioColor: '#7e7e7e',
+    radioColor: '#7f7f7f',
 
     get radioSelectedColor() {
         return Color(this.radioColor).darken(0.2).hexString();
@@ -201,18 +201,18 @@ export default {
     // Tabs
     tabBgColor: '#F8F8F8',
     tabFontSize: 15,
-    tabTextColor: '#222222',
+    tabTextColor: '#376092',
 
 
     // Text
     textColor: '#376092',
-    inverseTextColor: '#fff',
+    inverseTextColor: '#d7d7d7',
 
 
     // Title
     titleFontSize: (Platform.OS === 'ios' ) ? 17 : 19,
     subTitleFontSize: (Platform.OS === 'ios' ) ? 12 : 14,
-    subtitleColor: '#8e8e93',
+    subtitleColor: '#7f7f7f',
 
 
     // Other
@@ -224,8 +224,8 @@ export default {
         return Color(this.tabBgColor).darken(0.03).hexString();
     },
 
-    dropdownBg: '#000',
-    dropdownLinkColor: '#414142',
+    dropdownBg: '#d7d7d7',
+    dropdownLinkColor: '#7f7f7f',
     inputLineHeight: 24,
     jumbotronBg: '#C9C9CE',
     jumbotronPadding: 30

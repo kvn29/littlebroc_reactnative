@@ -29,9 +29,9 @@ import {
   CardItem
   } from 'native-base';
 
-import myTheme from '../Themes/mytheme';
-
 import { Actions } from 'react-native-router-flux';
+
+import myTheme from '../Themes/myTheme';
 
   class setting extends Component {
 
@@ -79,19 +79,16 @@ import { Actions } from 'react-native-router-flux';
     }
     const styles = StyleSheet.create({
       margin: {
-      marginTop: 70
+        marginTop: 70,
       },
       center: {
-          alignSelf: 'center'
+        alignSelf: 'center'
       },
       centerBtn: {
-    alignSelf: 'center',
-    marginTop: 20,
-    width: 200,
-    backgroundColor:  '#00ffcc'
+        alignSelf: 'center',
+        marginTop: 20,
+        width: 200,
+        backgroundColor:  '#376092',
   },
-  txtParams : {
-
-  }
     });
     module.exports = setting;

@@ -39,10 +39,10 @@ class Navigator_search extends Component {
         <Scene key="root">
           <Scene key="home" component={home} title="My Little Broc" />
           <Scene key="announce" component={announce} title="Annonces" />
-          <Scene key="search" component={search} title="Resultat de recherche" initial={true}/>
+          <Scene key="search" component={search} title="Resultat de recherche"/>
           <Scene key="categories" component={categories} title="Liste de categorie"/>
           <Scene key="typeBrocante" component={typeBrocante} title ="Types de brocante"/>
-          <Scene key="login" component={login} title="Connexion"/>
+          <Scene key="login" component={login} title="Connexion" initial={true}/>
         </Scene>
       </Router>
     )
