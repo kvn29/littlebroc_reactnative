@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry, TextInput, Text, View, Button } from 'react-native';
+import { Content } from 'native-base';
 import myTheme from '../Themes/myTheme';
 
 class login extends Component {
@@ -34,12 +35,12 @@ class login extends Component {
   render() {
     return (
     <Content theme={myTheme}>
-      <View style={{marginTop:55}}>
-        <TextInput onChangeText={(lastName) => this.setState({lastName})} value={this.state.lastName} placeholder='Votre nom' />
-        <TextInput onChangeText={(firstName) => this.setState({firstName})} value={this.state.firstName} placeholder='Votre prénom' />
-        <TextInput onChangeText={(email) => this.setState({email})} value={this.state.email} placeholder='Votre e-mail' />
-        <TextInput onChangeText={(phone) => this.setState({phone})} value={this.state.phone} placeholder='Votre numéro de téléphone' />
-        <TextInput onChangeText={(password) => this.setState({password})} value={this.state.password} placeholder='Votre mot de passe' />
+      <View style={{marginTop:150}}>
+        <TextInput style={{marginTop:10}} onChangeText={(lastName) => this.setState({lastName})} value={this.state.lastName} placeholder='Votre nom' />
+        <TextInput style={{marginTop:10}} onChangeText={(firstName) => this.setState({firstName})} value={this.state.firstName} placeholder='Votre prénom' />
+        <TextInput style={{marginTop:10}} onChangeText={(email) => this.setState({email})} value={this.state.email} placeholder='Votre e-mail' />
+        <TextInput style={{marginTop:10}} onChangeText={(phone) => this.setState({phone})} value={this.state.phone} placeholder='Votre numéro de téléphone' />
+        <TextInput style={{marginTop:10}} onChangeText={(password) => this.setState({password})} value={this.state.password} placeholder='Votre mot de passe' />
         <Button title="Valider" onPress={() => this.newUser(this.state)} />
       </View>
     </Content>
