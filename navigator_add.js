@@ -21,6 +21,7 @@ import { Router, Scene } from 'react-native-router-flux';
 
 import announce from './ui/announce.js'
 import categories from './ui/categories.js'
+import typeBrocante from './ui/typeBrocante.js'
 
 class Navigator_search extends Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class Navigator_search extends Component {
         <Scene key="root">
           <Scene key="announce" component={announce} title="Annonce" initial={true} />
           <Scene key="categories" component={categories} title="Catégories" typeList="checkbox"/>
+          <Scene key="typeBrocante" component={typeBrocante} title="Type de Brocante" typeList="checkbox"/>
         </Scene>
       </Router>
     )

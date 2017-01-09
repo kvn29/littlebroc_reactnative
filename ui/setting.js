@@ -51,7 +51,7 @@ import myTheme from '../Themes/myTheme';
     }
     render() {
       return (//{title: 'Second Scene', index: 1}
-        <Content style={styles.margin}>
+        <Content theme={myTheme} style={styles.margin}>
           <Card contentContainerStyle={styles.list} style={{marginTop: 60}} dataArray={this.state.annonces} renderRow={(item) =>
             <CardItem style={styles.item} onPress={this.openAnnounce}>
               <Image style={{ resizeMode: 'cover', width: null }} source={{uri : item.photoUrl}}>
