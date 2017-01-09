@@ -47,8 +47,8 @@ class categories extends Component {
 
     var ds = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2,
-    });
 
+    });
     this.setState({
       dataSource: ds.cloneWithRows(data),
       db : test.category
