@@ -31,7 +31,7 @@ import {
 
 import { Actions } from 'react-native-router-flux';
 
-import myTheme from '../Themes/mytheme';
+import myTheme from '../Themes/myTheme';
 
   class setting extends Component {
 

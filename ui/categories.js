@@ -26,7 +26,7 @@ import {
 import myTheme from '../Themes/myTheme';
 
 import { Actions } from 'react-native-router-flux';
-
+var test = require('../data/categoryData.js');
 
 import CheckBoxCustom from '../ui/checkbox.js'
 
@@ -86,6 +86,7 @@ class categories extends Component {
     });
   }
 
+
   // Ce qu'on veut faire : Lors du clic sur listitem, on coche la case interne.
   // En passant a la checkbox componont le nom de la fonction parent l'enfant peut déclencher une méthode du parent
   renderItem(item) {
@@ -139,7 +140,6 @@ class categories extends Component {
       }
     }
 }
-
 
   // Définition du style
   const Styles = StyleSheet.create({
