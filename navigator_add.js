@@ -21,8 +21,10 @@ import { Router, Scene } from 'react-native-router-flux';
 
 import announce from './ui/announce.js'
 import categories from './ui/categories.js'
+import login from './ui/login.js'
+import createMember from './ui/createMember.js'
 
-class Navigator_search extends Component {
+class Navigator_add extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +35,9 @@ class Navigator_search extends Component {
     return (
       <Router>
         <Scene key="root">
-          <Scene key="announce" component={announce} title="Annonce" initial={true} />
+          <Scene key="login" component={login} title="Connexion" initial={true} />
+          <Scene key="createMember" component={createMember} title="Nouvel utilisateur" />
+          <Scene key="announce" component={announce} title="Annonce" />
           <Scene key="categories" component={categories} title="Catégories" typeList="checkbox"/>
         </Scene>
       </Router>
@@ -41,4 +45,4 @@ class Navigator_search extends Component {
   }
 }
 
-module.exports = Navigator_search;
+module.exports = Navigator_add;
