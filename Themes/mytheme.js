@@ -109,7 +109,7 @@ export default {
 
     //FooterTab
     tabBarTextColor: (Platform.OS === 'ios' ) ? '#7f7f7f' : '#d7d7d7',
-    tabBarActiveTextColor: (Platform.OS === 'ios' ) ? '#376092' : '#00ffcc',
+    tabBarActiveTextColor: (Platform.OS === 'ios' ) ? '#376092' : '#376092',
     tabActiveBgColor: (Platform.OS=='ios') ? '#00ffcc' : '#00ffcc',
 
     //Tab

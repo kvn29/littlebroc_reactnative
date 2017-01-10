@@ -52,7 +52,7 @@ import myTheme from '../Themes/myTheme';
     }
     render() {
       return (//{title: 'Second Scene', index: 1}
-        <Content style={styles.margin}>
+        <Content theme={myTheme} style={styles.margin}>
               <Image style={{ resizeMode: 'cover', width: 100, height: 100 }} source={{uri : this.state.member.img}}></Image>
               <Text> {this.state.member.img}</Text>
          <View style={styles.center} >
@@ -80,7 +80,7 @@ import myTheme from '../Themes/myTheme';
     }
     const styles = StyleSheet.create({
       margin: {
-        marginTop: 70,
+        marginTop: 70
       },
       center: {
         alignSelf: 'center'
@@ -90,6 +90,6 @@ import myTheme from '../Themes/myTheme';
         marginTop: 20,
         width: 200,
         backgroundColor:  '#376092',
-  },
+  }
     });
     module.exports = setting;
