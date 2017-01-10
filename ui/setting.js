@@ -38,37 +38,24 @@ import myTheme from '../Themes/myTheme';
     constructor(props) {
       super(props);
       this.state = {
-        annonces: {},
-        memberID : '583566431a9f1105ae1fd658'
+        member: {},
+        memberID : '586fc63ec3d59a00118bb0e0'
       };
     }
 
     componentWillMount() {
       fetch('https://littlebrocapi.herokuapp.com/api/member/' + this.state.memberID ).then((response) => response.json()).then((json) => {
         this.setState({
-          annonces: json
+          member: json
         });
       });
     }
     render() {
       return (//{title: 'Second Scene', index: 1}
-<<<<<<< HEAD
         <Content theme={myTheme} style={styles.margin}>
-          <Card contentContainerStyle={styles.list} style={{marginTop: 60}} dataArray={this.state.annonces} renderRow={(item) =>
-            <CardItem style={styles.item} onPress={this.openAnnounce}>
-              <Image style={{ resizeMode: 'cover', width: null }} source={{uri : item.photoUrl}}>
-              <Text id="id" >{item._id}</Text>
-              <Text>{item.annonceTitle}</Text>
-              <Text>{item.annoncePrice} €</Text>
-              </Image>
-            </CardItem>
-            }>
-          </Card>
-=======
-        <Content style={styles.margin}>
-              <Image style={{ resizeMode: 'cover', width: 100, height: 100 }} source={{uri : this.state.annonces.photo}}></Image>
->>>>>>> 068ccd3b8f0e0fe0a599c0844a8e6c400268816c
-           <View style={styles.center} >
+              <Image style={{ resizeMode: 'cover', width: 100, height: 100 }} source={{uri : this.state.member.img}}></Image>
+              <Text> {this.state.member.img}</Text>
+         <View style={styles.center} >
            <Button style={styles.centerBtn} onPress={Actions.profil}>
           <Icon name='ios-contact'/>
             <Text style={styles.txtParams}>Mon profil</Text>
@@ -93,7 +80,7 @@ import myTheme from '../Themes/myTheme';
     }
     const styles = StyleSheet.create({
       margin: {
-        marginTop: 70,
+        marginTop: 70
       },
       center: {
         alignSelf: 'center'
@@ -103,6 +90,6 @@ import myTheme from '../Themes/myTheme';
         marginTop: 20,
         width: 200,
         backgroundColor:  '#376092',
-  },
+  }
     });
     module.exports = setting;
