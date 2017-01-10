@@ -38,23 +38,24 @@ import myTheme from '../Themes/myTheme';
     constructor(props) {
       super(props);
       this.state = {
-        annonces: {},
-        memberID : '583566431a9f1105ae1fd658'
+        member: {},
+        memberID : '586fc63ec3d59a00118bb0e0'
       };
     }
 
     componentWillMount() {
       fetch('https://littlebrocapi.herokuapp.com/api/member/' + this.state.memberID ).then((response) => response.json()).then((json) => {
         this.setState({
-          annonces: json
+          member: json
         });
       });
     }
     render() {
       return (//{title: 'Second Scene', index: 1}
         <Content style={styles.margin}>
-              <Image style={{ resizeMode: 'cover', width: 100, height: 100 }} source={{uri : this.state.annonces.photo}}></Image>
-           <View style={styles.center} >
+              <Image style={{ resizeMode: 'cover', width: 100, height: 100 }} source={{uri : this.state.member.img}}></Image>
+              <Text> {this.state.member.img}</Text>
+         <View style={styles.center} >
            <Button style={styles.centerBtn} onPress={Actions.profil}>
           <Icon name='ios-contact'/>
             <Text style={styles.txtParams}>Mon profil</Text>
