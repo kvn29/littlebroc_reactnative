@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry, TextInput, Text, View, Button } from 'react-native';
-<<<<<<< HEAD
 import { Content, List } from 'native-base';
-=======
-import { Content } from 'native-base';
->>>>>>> 068ccd3b8f0e0fe0a599c0844a8e6c400268816c
 import myTheme from '../Themes/myTheme';
 
 class login extends Component {
