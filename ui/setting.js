@@ -53,7 +53,7 @@ import myTheme from '../Themes/myTheme';
     render() {
       return (//{title: 'Second Scene', index: 1}
         <Content theme={myTheme} style={styles.margin}>
-              <Image style={{ resizeMode: 'cover', width: 100, height: 100 }} source={{uri : this.state.member.img}}></Image>
+              <Image style={{ resizeMode: 'cover', width: 100, height: 100 }} source={{uri :this.state.member.img}}></Image>
               <Text> {this.state.member.img}</Text>
          <View style={styles.center} >
            <Button style={styles.centerBtn} onPress={Actions.profil}>
