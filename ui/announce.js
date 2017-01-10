@@ -23,6 +23,7 @@ class announce extends Component {
   }
 
   render() {
+    console.log('props :', this.props.selectedBrocante);
     return (//{title: 'Second Scene', index: 1}
     <View style={{marginTop:55}}>
       <InputGroup borderType='regular' iconRight disabled>
@@ -47,7 +48,7 @@ class announce extends Component {
       </InputGroup>
       <InputGroup borderType='regular' iconRight disabled>
         <Icon name='ios-arrow-forward' onPress={Actions.typeBrocante}/>
-        <Input placeholder='Type de Brocante' />
+        <Input placeholder='Type de Brocante' value={this.props.selectedBrocante}/>
       </InputGroup>
       <InputGroup borderType='regular' iconRight disabled>
         <Icon name='ios-locate-outline'/>

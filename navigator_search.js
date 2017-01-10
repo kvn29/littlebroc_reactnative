@@ -35,7 +35,7 @@ class Navigator_search extends Component {
   }
   render() {
     return (
-      <Router>
+      <Router titleStyle={{color:'#376092'}}>
         <Scene key="root">
           <Scene key="home" component={home} title="My Little Broc" />
           <Scene key="announce" component={announce} title="Annonces" />

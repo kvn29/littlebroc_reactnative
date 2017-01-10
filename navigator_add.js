@@ -17,7 +17,8 @@ import {
   Icon,
   Badge
   } from 'native-base';
-import { Router, Scene } from 'react-native-router-flux';
+
+import { Router, Scene, Actions } from 'react-native-router-flux';
 
 import announce from './ui/announce.js'
 import categories from './ui/categories.js'
@@ -27,20 +28,32 @@ class Navigator_search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      navigator: this.props.navigator
+      navigator: this.props.navigator,
+      dataFromTypeBrocante: "Type de Brocante"
     }
   }
+  updateSelectedTypeBrocante() {
+    console.log('aaa')
+    this.setState({
+  //    dataFromTypeBrocante:item.checked
+  });
+    this.forceUpdate();
+  }
   render() {
+    console.log('RENDU ICI', this.state.dataFromTypeBrocante);
     return (
-      <Router>
+      <Router titleStyle={{color:'#376092'}}>
         <Scene key="root">
-          <Scene key="announce" component={announce} title="Annonce" initial={true} />
-          <Scene key="categories" component={categories} title="Catégories" typeList="checkbox"/>
-          <Scene key="typeBrocante" component={typeBrocante} title="Type de Brocante" typeList="checkbox"/>
+          <Scene key="announce" selectedBrocante={this.state.dataFromTypeBrocante} component={announce} title="Annonce" initial={true}  />
+          <Scene key="categories" mother={this} component={categories} title="Catégories" typeList="checkbox"
+            rightTitle="OK" onRight={()=>Actions.pop({})}
+            onBack={() =>  Actions.pop({ refresh: {} })} backTitle="Back"/>
+          <Scene key="typeBrocante" mother={this} component={typeBrocante} title="Type de Brocante" typeList="checkbox"
+            rightTitle="OK" onRight={()=>Actions.pop({})}
+            onBack={() =>  Actions.pop({ refresh: {} })} backTitle="Back"/>
         </Scene>
       </Router>
     )
   }
 }
-
 module.exports = Navigator_search;

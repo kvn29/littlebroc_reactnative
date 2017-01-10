@@ -81,34 +81,40 @@ class categories extends Component {
 
     renderBook(item) {
       return(
+        <Content theme={myTheme}>
         <TouchableHighlight onPress={() => this.toggleSwitch(item.name)}>
           <View>
             <View style={Styles.container}>
               <View style= {Styles.rightContainer}>
-                <Text>{item.name}</Text>
+                <Text style={{color:'#376092'}}>{item.name}</Text>
                 <CheckBox checked={item.checked} onPress={() => this.toggleSwitch(item.name)} />
               </View>
             </View>
             <View style={Styles.separator} />
           </View>
         </TouchableHighlight>
+      </Content>
       );
     }
     render() {
       if(this.state.typeList != "checkbox") {
         return (
+          <Content theme={myTheme}>
           <View style={{marginTop:60, flex:1}}>
             <ListView dataSource={this.state.dataSource}
                       renderRow={this.renderBook.bind(this)}
                       style={Styles.listView}
             />
           </View>
+        </Content>
         )
       } else {
           return(
+          <Content theme={myTheme}>
             <View style={{marginTop:60}}>
-              <Text>Hello</Text>
+              <Text style={{color:'000'}}>Hello</Text>
             </View>
+          </Content>
           );
       }
     }
@@ -117,20 +123,18 @@ class categories extends Component {
   // Définition du style
   const Styles = StyleSheet.create({
     listView: {
-      backgroundColor: '#F5FCFF',
-      height:200,
-      width:200
+      backgroundColor: '#f7f7f7',
     },
     separator: {
       height: 1,
-      backgroundColor: '#dddddd'
+      backgroundColor: '#7f7f7f'
     },
     container: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#f7f7f7',
         padding: 10
     },
     rightContainer: {

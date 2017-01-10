@@ -33,7 +33,7 @@ class Navigator_setting extends Component {
   }
   render() {
     return (
-      <Router>
+      <Router titleStyle={{color:'#376092'}}>
         <Scene key="root">
           <Scene key="setting" component={setting} title="Paramètres" initial={true} />
           <Scene key="profil" component={profil} title="Mon profil" />
