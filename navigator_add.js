@@ -21,6 +21,7 @@ import { Router, Scene } from 'react-native-router-flux';
 
 import announce from './ui/announce.js'
 import categories from './ui/categories.js'
+var test = require('./data/categoryData.js');
 
 class Navigator_search extends Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class Navigator_search extends Component {
       <Router>
         <Scene key="root">
           <Scene key="announce" component={announce} title="Annonce" initial={true} />
-          <Scene key="categories" component={categories} title="Catégories" typeList="checkbox"/>
+          <Scene key="categories" component={categories} title="Catégories" typeList="checkbox" donnees={test.category}/>
         </Scene>
       </Router>
     )

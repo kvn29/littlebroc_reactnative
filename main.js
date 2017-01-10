@@ -23,7 +23,7 @@ import {
   Icon,
   Badge
   } from 'native-base';
-import myTheme from './Themes/myTheme'
+import myTheme from './Themes/mytheme'
 
 import TabBarCustom from './ui/TabBarCustom.js'
 

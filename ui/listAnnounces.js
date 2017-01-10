@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Navigator, Platform, Image } from 'react-native';
 import { List, ListItem, Thumbnail, InputGroup, Icon, Input, Grid, Col, Picker, Card, CardItem } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-import myTheme from '../Themes/myTheme';
+import myTheme from '../Themes/mytheme';
 
 class listAnnounces extends Component {
 

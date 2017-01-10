@@ -24,7 +24,7 @@ import {
   Thumbnail
   } from 'native-base';
 
-import myTheme from '../Themes/myTheme';
+import myTheme from '../Themes/mytheme';
 
 import { Actions } from 'react-native-router-flux';
 

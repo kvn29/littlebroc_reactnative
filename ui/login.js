@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AppRegistry, TextInput, Text, View, Button } from 'react-native';
 import { Content } from 'native-base';
-import myTheme from '../Themes/myTheme';
+import myTheme from '../Themes/mytheme';
 
 class login extends Component {
   constructor(props) {
