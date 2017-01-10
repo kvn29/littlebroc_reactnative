@@ -46,6 +46,10 @@ class announce extends Component {
         <Input placeholder={this.state.annonce.dateChange} />
       </InputGroup>
       <InputGroup borderType='regular' iconRight disabled>
+        <Icon name='ios-arrow-forward' onPress={Actions.typeBrocante}/>
+        <Input placeholder='Type de Brocante' />
+      </InputGroup>
+      <InputGroup borderType='regular' iconRight disabled>
         <Icon name='ios-locate-outline'/>
         <Input placeholder='Lieu' />
       </InputGroup>

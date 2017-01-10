@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { AppRegistry, TextInput, Text, View, Button } from 'react-native';
-import { Content } from 'native-base';
-import myTheme from '../Themes/mytheme';
+
+import { Content, List } from 'native-base';
+
+import myTheme from '../Themes/myTheme';
+
 
 class login extends Component {
   constructor(props) {
