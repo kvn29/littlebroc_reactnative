@@ -38,30 +38,21 @@ import myTheme from '../Themes/myTheme';
     constructor(props) {
       super(props);
       this.state = {
-        annonces: [],
-        annonce: {}
+        annonces: {},
+        memberID : '583566431a9f1105ae1fd658'
       };
     }
+
     componentWillMount() {
-      fetch('https://littlebrocapi.herokuapp.com/api/member/58306e8982d1ce72659838d5').then((response) => response.json()).then((json) => {
+      fetch('https://littlebrocapi.herokuapp.com/api/member/' + this.state.memberID ).then((response) => response.json()).then((json) => {
         this.setState({
-          annonce: json
+          annonces: json
         });
       });
     }
     render() {
       return (//{title: 'Second Scene', index: 1}
-        <Content style={styles.margin}>
-          <Card contentContainerStyle={styles.list} style={{marginTop: 60}} dataArray={this.state.annonces} renderRow={(item) =>
-            <CardItem style={styles.item} onPress={this.openAnnounce}>
-              <Image style={{ resizeMode: 'cover', width: null }} source={{uri : item.photoUrl}}>
-              <Text id="id" >{item._id}</Text>
-              <Text>{item.annonceTitle}</Text>
-              <Text>{item.annoncePrice} €</Text>
-              </Image>
-            </CardItem>
-            }>
-          </Card>
+        <Content>
            <View style={styles.center} >
            <Button style={styles.centerBtn} onPress={Actions.profil}>
           <Icon name='ios-contact'/>

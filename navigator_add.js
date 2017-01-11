@@ -23,6 +23,7 @@ import announce from './ui/announce.js'
 import categories from './ui/categories.js'
 import login from './ui/login.js'
 import createMember from './ui/createMember.js'
+import typeBrocante from './ui/typeBrocante.js'
 
 class Navigator_add extends Component {
   constructor(props) {
@@ -39,6 +40,7 @@ class Navigator_add extends Component {
           <Scene key="createMember" component={createMember} title="Nouvel utilisateur" />
           <Scene key="announce" component={announce} title="Annonce" />
           <Scene key="categories" component={categories} title="Catégories" typeList="checkbox"/>
+          <Scene key="typeBrocante" component={typeBrocante} title="Type de Brocante" typeList="checkbox"/>
         </Scene>
       </Router>
     )

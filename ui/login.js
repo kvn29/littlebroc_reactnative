@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { AsyncStorage, AppRegistry, StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
-import { Container, Header, Title, Content, Footer, FooterTab, Icon, Badge, InputGroup, Input } from 'native-base';
+import { Container, Header, Title, Content, Footer, FooterTab, Icon, Badge, InputGroup, Input, List } from 'native-base';
 import { Actions } from 'react-native-router-flux';
+import myTheme from '../Themes/myTheme';
 
 class login extends Component {
   constructor(props) {
@@ -38,10 +39,10 @@ class login extends Component {
       return response.json();
     }).then((response) => {
       console.log(response);
-      if (response.token && response._id) {
+      if (response.token && response.userId) {
         AsyncStorage.multiSet([
           ['token', response.token],
-          ['userId', response._id.toString()]
+          ['userId', response.userId.toString()]
         ]);
       } else {
         if (callback) { callback(); }
@@ -90,8 +91,9 @@ class login extends Component {
   render() {
     if (!this.state.token) {
       return (
+        <Content theme={myTheme}>
         <View style={{marginTop:55}}>
-          <TextInput onChangeText={(user) => this.setState({user})} value={this.state.pseudo} placeholder='Votre pseudo' />
+          <TextInput onChangeText={(user) => this.setState({user})} value={this.state.email} placeholder='Votre email' />
           <TextInput onChangeText={(password) => this.setState({password})} value={this.state.password} placeholder='Votre mot de passe' />
           <Button title="Valider" onPress={() => this.submitCredentials(this.state)} />
           <InputGroup borderType='regular' iconRight disabled>
@@ -99,11 +101,12 @@ class login extends Component {
             <Input placeholder='Créer un compte' />
           </InputGroup>
         </View>
+        </Content>
       );
     } else {
       return (
         <View style={{marginTop:55}}>
-          <Text></Text>
+          <Text>Connecté</Text>
         </View>
       );
     }

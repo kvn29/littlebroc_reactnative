@@ -73,7 +73,7 @@ export default {
 
 
     // Check Box
-    checkboxBgColor: '#039BE5',
+    checkboxBgColor: '#00ffcc',
     checkboxSize: 23,
     checkboxTickColor: '#fff',
 
@@ -104,16 +104,16 @@ export default {
 
     // Footer
     footerHeight: 55,
-    footerDefaultBg: (Platform.OS === 'ios' ) ? '#F8F8F8' : '#376092',
+    footerDefaultBg: (Platform.OS === 'ios' ) ? '#d7d7d7' : '#376092',
 
 
     //FooterTab
-    tabBarTextColor: (Platform.OS === 'ios' ) ? '#7f7f7f' : '#fff',
-    tabBarActiveTextColor: (Platform.OS === 'ios' ) ? '#376092' : '#00ffcc',
-    tabActiveBgColor: (Platform.OS=='ios') ? '#00ffcc' : undefined,
+    tabBarTextColor: (Platform.OS === 'ios' ) ? '#7f7f7f' : '#d7d7d7',
+    tabBarActiveTextColor: (Platform.OS === 'ios' ) ? '#376092' : '#376092',
+    tabActiveBgColor: (Platform.OS=='ios') ? '#00ffcc' : '#00ffcc',
 
     //Tab
-    tabDefaultBg: (Platform.OS === 'ios' ) ? '#F8F8F8' : '#376092',
+    tabDefaultBg: (Platform.OS === 'ios' ) ? '#7f7f7f' : '#376092',
     topTabBarTextColor: (Platform.OS === 'ios' ) ? '#6b6b6b' : '#b3c7f9',
     topTabBarActiveTextColor: (Platform.OS === 'ios' ) ? '#007aff' : '#fff',
     topTabActiveBgColor: (Platform.OS=='ios') ? '#cde1f9' : undefined,
@@ -186,7 +186,7 @@ export default {
 
     // Radio Button
     radioBtnSize: (Platform.OS === 'ios') ? 25 : 23,
-    radioColor: '#7e7e7e',
+    radioColor: '#7f7f7f',
 
     get radioSelectedColor() {
         return Color(this.radioColor).darken(0.2).hexString();
@@ -212,7 +212,7 @@ export default {
     // Title
     titleFontSize: (Platform.OS === 'ios' ) ? 17 : 19,
     subTitleFontSize: (Platform.OS === 'ios' ) ? 12 : 14,
-    subtitleColor: '#8e8e93',
+    subtitleColor: '#7f7f7f',
 
 
     // Other
@@ -224,8 +224,8 @@ export default {
         return Color(this.tabBgColor).darken(0.03).hexString();
     },
 
-    dropdownBg: '#000',
-    dropdownLinkColor: '#414142',
+    dropdownBg: '#d7d7d7',
+    dropdownLinkColor: '#7f7f7f',
     inputLineHeight: 24,
     jumbotronBg: '#C9C9CE',
     jumbotronPadding: 30
