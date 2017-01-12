@@ -3,7 +3,7 @@ import { AppRegistry, StyleSheet, Text, View, Navigator, Image } from 'react-nat
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Icon, Badge, InputGroup, Input } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import myTheme from '../Themes/myTheme';
-var GLOBAL = require('../data/exchange.js');
+var EXCHANGE = require('../data/exchange.js');
 class announce extends Component {
 
   constructor(props) {
@@ -14,9 +14,10 @@ class announce extends Component {
     };
   }
   componentWillReceiveProps(nextProps) {
-    console.log('là array', nextProps.selectedBrocante);
+    console.log('là array', nextProps.selectedCategory);
     this.setState({
-      selectedBrocante: nextProps.selectedBrocante
+      selectedBrocante: nextProps.selectedBrocante,
+      selectedCategory: nextProps.selectedCategory
     })
   }
   // la requete prend pour paramètre l'identifiant de l'annonce sélectionnée dans la liste précédente (listAnnounces)
@@ -33,7 +34,7 @@ class announce extends Component {
     <View style={{marginTop:55}}>
       <InputGroup borderType='regular' iconRight disabled>
         <Icon name='ios-arrow-forward' onPress={Actions.categories}/>
-        <Input placeholder='Catégories' />
+        <Input placeholder='Catégories' value={this.state.selectedCategory}/>
       </InputGroup>
       <Image style={{ width: 150, height: 150 }} source={{uri : this.state.annonce.photoUrl}}/>
       <InputGroup borderType='regular' iconRight disabled>

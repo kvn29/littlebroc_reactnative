@@ -6,11 +6,27 @@ const tab = {
       checked: false
     },
     {
-      name: "Bricolage",
+      name: "Bricolage/Jardinage",
       checked: false
     },
     {
-      name: "Chaussures",
+      name: "Chaussures Femmes",
+      checked: false
+    },
+    {
+      name: "Chaussures Hommes",
+      checked: false
+    },
+    {
+      name: "Chaussures Filles",
+      checked: false
+    },
+    {
+      name: "Chaussures Garçons",
+      checked: false
+    },
+    {
+      name: "Chaussures Bébés",
       checked: false
     },
     {
@@ -30,11 +46,27 @@ const tab = {
       checked: false
     },
     {
-      name: "Loisirs",
+      name: "DVD/Blu Ray",
       checked: false
     },
     {
-      name: "Multimédia",
+      name: "CD/Musique",
+      checked: false
+    },
+    {
+      name: "Vélos/Trotinettes/Rollers",
+      checked: false
+    },
+    {
+      name: "Livres",
+      checked: false
+    },
+    {
+      name: "Jeux/Jouets",
+      checked: false
+    },
+    {
+      name: "Sports",
       checked: false
     },
     {
@@ -42,13 +74,33 @@ const tab = {
       checked: false
     },
     {
-      name: "Vintage",
+      name: "Vêtements Femmes",
       checked: false
     },
     {
-      name: "Vêtements",
+      name: "Vêtements Femmes Enceintes",
       checked: false
-    }
+    },
+    {
+      name: "Vêtements Hommes",
+      checked: false
+    },
+    {
+      name: "Vêtements Filles",
+      checked: false
+    },
+    {
+      name: "Vêtements Garçons",
+      checked: false
+    },
+    {
+      name: "Vêtements Bébés",
+      checked: false
+    },
+    {
+      name: "Vintage",
+      checked: false
+    },
   ]
 }
 module.exports = tab;
