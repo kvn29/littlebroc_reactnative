@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Navigator
+  Navigator,
+  Platform
 } from 'react-native';
 import {
   Container,
@@ -58,7 +59,7 @@ export default class test extends Component {
     render() {
         console.log('HEIGHT WINDOW', Dimensions.get('window').height);
         return (
-          <Container >
+          <Container theme={myTheme}>
             <Content bounces={false} style={{
                 backgroundColor: 'red',
                 position: 'absolute',
@@ -106,15 +107,38 @@ const Styles = StyleSheet.create({
     backgroundColor: 'red'
   },
   navigator: {
-    position:"absolute",
-    top:0,
-    left:0,
-    right:0,
-    backgroundColor: 'red',
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height-55
-  }
+      width: Dimensions.get('window').width,
+      ...Platform.select({
+        ios: {
+          position:"absolute",
+          top:0,
+          left:0,
+          right:0,
+          backgroundColor: 'white',
+          height: Dimensions.get('window').height-55
+        },
+        android: {
+          backgroundColor: 'white',
+          height: Dimensions.get('window').height-79
+        },
+      }),
+    }
 });
+// navigatorForAndroid: {
+//   backgroundColor: 'white',
+//   width: Dimensions.get('window').width,
+//   height: Dimensions.get('window').height-55
+// },
+// navigatorForIOS: {
+//   position:"absolute",
+//   top:0,
+//   left:0,
+//   right:0,
+//   backgroundColor: 'red',
+//   width: Dimensions.get('window').width,
+//   height: Dimensions.get('window').height-55
+// }
+
 
 AppRegistry.registerComponent('test', () => test);
 
