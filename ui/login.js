@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AsyncStorage, AppRegistry, StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
-import { Container, Header, Title, Content, Footer, FooterTab, Icon, Badge, InputGroup, Input, List } from 'native-base';
+import { Container, Header, Title, Content, Footer, FooterTab, Icon, InputGroup, Input, List } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import myTheme from '../Themes/myTheme';
 
@@ -17,7 +17,7 @@ class login extends Component {
 
   // si le formulaire de connexion est renseigné alors la fonction login est executée
   submitCredentials(user){
-    if (user.username !== undefined && user.password !== undefined) {
+    if (user.user !== undefined && user.password !== undefined) {
       this.login({
         username: user.user,
         password: user.password
@@ -38,12 +38,12 @@ class login extends Component {
     }).then((response) => {
       return response.json();
     }).then((response) => {
-      console.log(response);
       if (response.token && response.userId) {
         AsyncStorage.multiSet([
           ['token', response.token],
           ['userId', response.userId.toString()]
         ]);
+        Actions.pop();
       } else {
         if (callback) { callback(); }
       }
@@ -59,13 +59,16 @@ class login extends Component {
         return this.getUser(data[1][1]);
       }
     }).then((user) => {
-      return user.json();
+      if(user){
+        return user.json();
+      }else{
+        return null;
+      }
     }).then((user) => {
       this.setState({
         user: user,
         token: token
-      }),
-      Actions.announce();
+      })
     })
 
   }
@@ -79,14 +82,6 @@ class login extends Component {
       }
     });
   }
-
-  // logout(){
-  //   fetch(LOGOUT_REQUEST_URL, {
-  //     method: 'GET'
-  //   }).then(function () {
-  //     AsyncStorage.multiRemove(['userId', 'token']);
-  //   });
-  // }
 
   render() {
     if (!this.state.token) {
@@ -104,11 +99,7 @@ class login extends Component {
         </Content>
       );
     } else {
-      return (
-        <View style={{marginTop:55}}>
-          <Text>Connecté</Text>
-        </View>
-      );
+
     }
   }
 }

@@ -16,17 +16,15 @@ import {
   Button,
   Icon,
   Badge
-  } from 'native-base';
+} from 'native-base';
 import { Router, Scene } from 'react-native-router-flux';
 
-import setting from './ui/setting.js'
-import profil from './ui/profil.js'
-import myAnnounce from './ui/myAnnounce.js'
-import messages from './ui/messages.js'
+import wishList from './ui/listAnnounces.js'
+import announce from './ui/announce.js'
 import login from './ui/login.js'
 import createMember from './ui/createMember.js'
 
-class Navigator_setting extends Component {
+class Navigator_wishList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -39,14 +37,12 @@ class Navigator_setting extends Component {
         <Scene key="root">
           <Scene key="login" component={login} title="Connexion" />
           <Scene key="createMember" component={createMember} title="Nouvel utilisateur" />
-          <Scene key="setting" component={setting} title="Paramètres" initial={true}/>
-          <Scene key="profil" component={profil} title="Mon profil" />
-          <Scene key="myAnnounce" component={myAnnounce} title="Mes annonces" />
-          <Scene key="messages" component={messages} title="Mes messages" />
+          <Scene key="wishList" component={wishList} title="Liste de souhaits" initial={true}/>
+          <Scene key="announce" component={announce} title="Annonce" />
         </Scene>
       </Router>
-    )
+    );
   }
 }
 
-module.exports = Navigator_setting;
+module.exports = Navigator_wishList;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  AsyncStorage,
   AppRegistry,
   StyleSheet,
   Text,
@@ -32,6 +33,10 @@ import {
          results: {
            items: [],
          },
+       };
+
+       if(AsyncStorage.getItem('token') == null) {
+           Actions.login();
        };
     }
 

@@ -6,7 +6,7 @@ export default {
 
     // Badge
     badgeBg: '#ED1727',
-    badgeColor: '#fff',
+    badgeColor: '#f7f7f7',
 
 
     // Button
@@ -69,22 +69,22 @@ export default {
 
 
     // Card
-    cardDefaultBg: '#fff',
+    cardDefaultBg: '#f7f7f7',
 
 
     // Check Box
     checkboxBgColor: '#00ffcc',
     checkboxSize: 23,
-    checkboxTickColor: '#fff',
+    checkboxTickColor: '#376092',
 
 
     // Color
-    brandPrimary : '#5067FF',
+    brandPrimary : '#376092',
     brandInfo: '#5bc0de',
-    brandSuccess: '#5cb85c',
+    brandSuccess: '#00ffcc',
     brandDanger: '#d9534f',
     brandWarning: '#f0ad4e',
-    brandSidebar: '#252932',
+    brandSidebar: '#376092',
 
 
     // Font
@@ -114,19 +114,19 @@ export default {
 
     //Tab
     tabDefaultBg: (Platform.OS === 'ios' ) ? '#7f7f7f' : '#376092',
-    topTabBarTextColor: (Platform.OS === 'ios' ) ? '#6b6b6b' : '#b3c7f9',
+    topTabBarTextColor: (Platform.OS === 'ios' ) ? '#376092' : '#00ffcc',
     topTabBarActiveTextColor: (Platform.OS === 'ios' ) ? '#007aff' : '#fff',
     topTabActiveBgColor: (Platform.OS=='ios') ? '#cde1f9' : undefined,
     topTabBarBorderColor: (Platform.OS === 'ios' ) ? '#007aff' : '#fff',
 
 
     // Header
-    iosToolbarBtnColor: '#007aff',
-    toolbarDefaultBg: (Platform.OS === 'ios' ) ? '#F8F8F8' : '#376092',
+    iosToolbarBtnColor: '#376092',
+    toolbarDefaultBg: (Platform.OS === 'ios' ) ? '#f7f7f7' : '#376092',
     toolbarHeight: (Platform.OS === 'ios' ) ? 64 : 56,
     toolbarIconSize: (Platform.OS === 'ios' ) ? 20 : 22,
-    toolbarInputColor: '#CECDD2',
-    toolbarInverseBg: '#222',
+    toolbarInputColor: '#7f7f7f',
+    toolbarInverseBg: '#376092',
     toolbarTextColor: (Platform.OS==='ios') ? '#376092' : '#376092',
     get statusBarColor() {
         return Color(this.toolbarDefaultBg).darken(0.2).hexString();
@@ -199,7 +199,7 @@ export default {
 
 
     // Tabs
-    tabBgColor: '#F8F8F8',
+    tabBgColor: '#f7f7f7',
     tabFontSize: 15,
     tabTextColor: '#376092',
 

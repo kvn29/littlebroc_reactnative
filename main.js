@@ -30,6 +30,7 @@ import TabBarCustom from './ui/TabBarCustom.js'
 import Navigator_search from './navigator_search.js'
 import Navigator_favoris from './navigator_favoris.js'
 import Navigator_add from './navigator_add.js'
+import Navigator_wishList from './navigator_wishList.js'
 import Navigator_setting from './navigator_setting.js'
 
 export default class test extends Component {
@@ -41,8 +42,6 @@ export default class test extends Component {
       };
 
     }
-
-
 
     changeNavigatorByIndex(index) {
       // Cette méthode qui prend un index affiche le bon navigator selon
@@ -74,6 +73,9 @@ export default class test extends Component {
                       break;
                       case 2:
                         return (<Navigator_add />);
+                      break;
+                      case 3:
+                        return (<Navigator_wishList />);
                       break;
                       case 4:
                         return (<Navigator_setting />);

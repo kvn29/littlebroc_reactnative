@@ -34,6 +34,8 @@ class typeBrocante extends Component {
 
   constructor(props){
     super(props);
+
+
     var ds = new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2,
     });
@@ -42,16 +44,9 @@ class typeBrocante extends Component {
         db: test.typebrocante
     };
   }
-
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     dataSource: new ListView.DataSource({
-  //       rowHasChanged: (row1, row2) => row1 !== row2
-  //     })
-  //   };
-  // }
-
+  componentWillMount() {
+    this.props.mother.updateSelectedTypeBrocante();
+  }
   componentDidMount() {
     var data = test.typebrocante;
 
@@ -67,12 +62,10 @@ class typeBrocante extends Component {
 
   toggleSwitch(name) {
 
-
-    // var clone = this.state.dataSource._dataBlob.s1;
     var clone = this.state.db.slice();
 
     for(var item in clone) {
-      // console.log(clone[item]);
+
       if(clone[item].name === name) {
         //console.log("AVANT : ", clone[item].checked);
         clone[item].checked = !clone[item].checked;
@@ -92,36 +85,42 @@ class typeBrocante extends Component {
   // En passant a la checkbox componont le nom de la fonction parent l'enfant peut déclencher une méthode du parent
   renderBook(item) {
      return (
+       <Content theme={myTheme}>
             <TouchableHighlight onPress={() => this.toggleSwitch(item.name)}>
                 <View>
                     <View style={Styles.container}>
                         <View style={Styles.rightContainer}>
-                            <Text>{item.name}</Text>
                             <CheckBox checked={item.checked} onPress={() => this.toggleSwitch(item.name)} />
+                            <Text style={{color:'#376092'}}>{item.name}</Text>
                         </View>
                     </View>
                     <View style={Styles.separator} />
                 </View>
             </TouchableHighlight>
+        </Content>
        );
      }
 
     render() {
       if(this.state.typeList != "checkbox") {
         return (
-          <View style={{marginTop:60, flex:1}}>
-            <ListView dataSource={this.state.dataSource}
-                      renderRow={this.renderBook.bind(this)}
-                      style={Styles.listView}
-            />
-          </View>
+          <Content theme={myTheme}>
+            <View style={{marginTop:60, flex:1}}>
+              <ListView dataSource={this.state.dataSource}
+                        renderRow={this.renderBook.bind(this)}
+                        style={Styles.listView}
+                        />
+            </View>
+          </Content>
         )
       }
       else {
         return (
-          <View style={{marginTop:60}} >
-            <Text>HELLO</Text>
-          </View>
+          <Content theme={myTheme}>
+              <View style={{marginTop:60}} >
+                <Text style={{color:'000'}}>HELLO</Text>
+              </View>
+          </Content>
         );
       }
     }
@@ -130,20 +129,18 @@ class typeBrocante extends Component {
 // Définition du style
 const Styles = StyleSheet.create({
   listView: {
-    backgroundColor: '#F5FCFF',
-    height:200,
-    width:200
+    backgroundColor: '#f7f7f7',
   },
   separator: {
     height: 1,
-    backgroundColor: '#dddddd'
+    backgroundColor: '#7f7f7f'
   },
   container: {
       flex: 1,
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#F5FCFF',
+      backgroundColor: '#f7f7f7',
       padding: 10
   },
   rightContainer: {
