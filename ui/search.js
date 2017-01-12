@@ -5,7 +5,8 @@ import {
   Text,
   View,
   Navigator,
-  ScrollView
+  ScrollView,
+  ActivityIndicator
 } from 'react-native';
 
 import {
@@ -29,78 +30,59 @@ import Dimensions from 'Dimensions';
 
 import { Actions } from 'react-native-router-flux';
 
-  class search extends Component {
+class search extends Component {
 
-    constructor(props) {
-     super(props);
-     this.state = {
-       radio1: false
-     };
-   }
-   toggleRadio1() {
-      this.setState({
-        radio1: true
-      });
-    }
-
-
-    render() {
-      return (
-        <View style={{paddingTop: 62}}>
-          <ScrollView style={{backgroundColor:'blue',height:Dimensions.get('window').height-117}} automaticallyAdjustContentInsets={true}>
-          <Text>aa</Text>
-          <Text>aa</Text>
-          <Text>aa</Text>
-          <Text>aa</Text>
-          <Text>aa</Text>
-          <Text>aa</Text>
-          <Text>aa</Text>
-          <Text>aa</Text>
-          <Text>aa</Text>
-            <Text>aa</Text>
-            <Text>aa</Text>
-            <Text>aa</Text>
-            <Text>aa</Text>
-            <Text>aa</Text>
-            <Text>aa</Text>
-            <Text>aa</Text>
-            <Text>aa</Text>
-            <Text>aa</Text>
-              <Text>aa</Text>
-              <Text>aa</Text>
-              <Text>aa</Text>
-              <Text>aa</Text>
-              <Text>aa</Text>
-              <Text>aa</Text>
-              <Text>aa</Text>
-              <Text>aa</Text>
-              <Text>aa</Text>
-                <Text>aa</Text>
-                <Text>aa</Text>
-                <Text>aa</Text>
-                <Text>aa</Text>
-                <Text>aa</Text>
-                <Text>aa</Text>
-                <Text>aa</Text>
-                <Text>aa</Text>
-                <Text>isa</Text>
-            </ScrollView>
-        </View>
-      )
-    }
+  constructor(props) {
+    super(props);
+    // States Informations :
+    // showLoadingMessage: Boolean:  à montrer ou non la roue de chargement au démarrage
+    // annonces: Array: Contient les annonces
+    this.state = {
+      showLoadingMessage: true,
+      annonces: []
+    };
   }
-  const styles = StyleSheet.create({
-  buttonToNextVue: {
-    marginBottom: 5,
-    borderRadius: 0,
-    backgroundColor:  '#376092',
-    alignSelf: 'stretch'
-  },
-  red: {
-    color: 'red',
-  },
+
+  componentWillMount() {
+    fetch('https://littlebrocapi.herokuapp.com/api/annonce').then((response) => response.json()).then((json) => {
+      this.setState({
+        annonces: json,
+        showLoadingMessage: false
+      });
+      console.log(json);
+    });
+  }
+
+  render() {
+    // Définition du message de chargement
+    let loadingMessage = null;
+    if (this.state.showLoadingMessage) {
+      loadingMessage = (
+        <View style={{marginTop:120}}>
+          <ActivityIndicator animating={true} style={{height: 80}} size="large" />
+          <Text style={styles.loadingMessageText}>Chargement en cours</Text>
+        </View>);
+    } else {
+      loadingMessage = null;
+    }
+    // Fin définition du message de chargement
+
+    return (
+      <View style={{paddingTop: 62}}>
+        <ScrollView style={{backgroundColor:'white',height:Dimensions.get('window').height-117}} automaticallyAdjustContentInsets={true}>
+          {loadingMessage}
+          
+        </ScrollView>
+      </View>
+    )
+  }
+}
+const styles = StyleSheet.create({
+  loadingMessageText: {
+    textAlign:'center',
+    fontWeight:'bold',
+    color: '#666'
+  }
 });
-  // <View><Text onPress={() => {
-  //   this.props.navigator.push({title: 'Second Scene', index: 1});
-  // }}>VUE 1</Text></View>
-  module.exports = search;
+
+module.exports = search;
