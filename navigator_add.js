@@ -42,15 +42,16 @@ class Navigator_search extends Component {
             title="Catégories"
             typeList="checkbox"
             rightTitle="OK"
+            rightButtonTextStyle = {{color: '#376092'}}
             onRight={()=>EXCHANGE.backCategorieToAnnonce() }
             onBack={() =>  Actions.pop()}
-            backTitle="Back"
             leftButtonIconStyle = {{ tintColor:'#376092'}}/>
           <Scene key="typeBrocante"
             component={typeBrocante}
             title="Type de Brocante"
             typeList="checkbox"
             rightTitle="OK"
+            rightButtonTextStyle = {{color: '#376092'}}
             onRight={()=> EXCHANGE.backBrocantetypeToAnnonce() }
             onBack={() => Actions.pop()}
             leftButtonIconStyle = {{ tintColor:'#376092'}}/>
