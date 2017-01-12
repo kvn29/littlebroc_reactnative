@@ -28,9 +28,8 @@ import {
   Card,
   CardItem
   } from 'native-base';
-
+//import ToggleDisplay from 'react-toggle-display';
 import { Actions } from 'react-native-router-flux';
-
 import myTheme from '../Themes/myTheme';
 
   class setting extends Component {
@@ -39,22 +38,29 @@ import myTheme from '../Themes/myTheme';
       super(props);
       this.state = {
         member: {},
-        memberID : '586fc63ec3d59a00118bb0e0'
+        memberID : '586fc63ec3d59a00118bb0e0',
+        isAdmin: false
       };
     }
 
+    // getInitialState() {
+    //         return {
+    //             isAuthorized: false
+    //         };
+    //     }
     componentWillMount() {
       fetch('https://littlebrocapi.herokuapp.com/api/member/' + this.state.memberID ).then((response) => response.json()).then((json) => {
         this.setState({
-          member: json
+          member: json,
+          isAdmin: json.admin
         });
       });
     }
     render() {
       return (//{title: 'Second Scene', index: 1}
         <Content theme={myTheme} style={styles.margin}>
-              <Image style={{ resizeMode: 'cover', width: 100, height: 100 }} source={{uri :this.state.member.img}}></Image>
-              <Text> {this.state.member.img}</Text>
+              <Image style={{ resizeMode: 'cover', width: 100, height: 100 }} source={{uri : this.state.member.img}}></Image>
+              <Text> {this.state.member.img} </Text>
          <View style={styles.center} >
            <Button style={styles.centerBtn} onPress={Actions.profil}>
           <Icon name='ios-contact'/>
@@ -72,6 +78,16 @@ import myTheme from '../Themes/myTheme';
              <Icon name="ios-print"/>
              <Text>Votre bannière</Text>
            </Button>
+
+           <View style={{opacity: this.state.isAdmin ? 1 : 0}} >
+             <Button style={styles.centerBtn}>
+               <Icon name="ios-warning"/>
+               <Text>Annonces signalée</Text>
+             </Button>
+          </View>
+
+
+
            </View>
         </Content>
 
@@ -84,6 +100,11 @@ import myTheme from '../Themes/myTheme';
       },
       center: {
         alignSelf: 'center'
+      },
+      test: {
+        height: 0,
+        width: 0
+
       },
       centerBtn: {
         alignSelf: 'center',
