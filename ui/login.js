@@ -53,7 +53,7 @@ class login extends Component {
   render() {
     return (
       <Content theme={myTheme}>
-      <View style={{marginTop:55}}>
+      <View style={{marginTop:80}}>
         <TextInput onChangeText={(user) => this.setState({user})} value={this.state.email} placeholder='Votre email' />
         <TextInput onChangeText={(password) => this.setState({password})} value={this.state.password} placeholder='Votre mot de passe' />
         <Button title="Valider" onPress={() => this.submitCredentials(this.state)} />
