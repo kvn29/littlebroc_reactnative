@@ -42,10 +42,9 @@ class Navigator_search extends Component {
             title="Catégories"
             typeList="checkbox"
             rightTitle="OK"
-            onRight={()=>Actions.pop({})}
+            onRight={()=>EXCHANGE.backCategorieToAnnonce() }
             onBack={() =>  Actions.pop()}
             backTitle="Back"
-            backTitleStyle = {{ color:'red'}}
             leftButtonIconStyle = {{ tintColor:'#376092'}}/>
           <Scene key="typeBrocante"
             component={typeBrocante}

@@ -35,8 +35,6 @@ class typeBrocante extends Component {
 
   constructor(props){
     super(props);
-    // EXCHANGE.selectedBrocante = "zizi dur";
-    //console.log('la', GLOBAL.test);
 
     var ds = new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2,
@@ -76,7 +74,6 @@ class typeBrocante extends Component {
 
     var clone = this.state.db.slice();
 
-
     for(var item in clone) {
       clone[item].checked = false; // <- Empeche la multi selection
 
@@ -98,6 +95,7 @@ class typeBrocante extends Component {
   }
   // Ce qu'on veut faire : Lors du clic sur listitem, on coche la case interne.
   // En passant a la checkbox componont le nom de la fonction parent l'enfant peut déclencher une méthode du parent
+
   renderBook(item) {
      return (
        <Content theme={myTheme}>
