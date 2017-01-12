@@ -13,11 +13,13 @@ import {
   } from 'native-base';
 
 import myTheme from '../Themes/myTheme';
+import main from '../main';
 
 class TabBarCustom extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       currentTabBarIndex: 0
     };

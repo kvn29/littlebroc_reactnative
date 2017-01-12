@@ -22,10 +22,12 @@ import { Router, Scene, Actions } from 'react-native-router-flux';
 var EXCHANGE = require('./data/exchange.js');
 import announce from './ui/announce.js'
 import categories from './ui/categories.js'
+import login from './ui/login.js'
+import createMember from './ui/createMember.js'
 import typeBrocante from './ui/typeBrocante.js'
 
+class Navigator_add extends Component {
 
-class Navigator_search extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -57,8 +59,11 @@ class Navigator_search extends Component {
             onBack={() => Actions.pop()}
             leftButtonIconStyle = {{ tintColor:'#376092'}}/>
         </Scene>
+        <Scene key="login" component={login} title="Connexion"/>
+        <Scene key="createMember" component={createMember} title="Créer un compte"/>
       </Router>
     )
   }
 }
-module.exports = Navigator_search;
+
+module.exports = Navigator_add;

@@ -1,6 +1,27 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, Navigator, Image } from 'react-native';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Icon, Badge, InputGroup, Input } from 'native-base';
+import {
+  AsyncStorage,
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+  Navigator,
+  Image ,
+  Platform
+} from 'react-native';
+import {
+  Container,
+  Header,
+  Title,
+  Content,
+  Footer,
+  FooterTab,
+  Button,
+  Icon,
+  Badge,
+  InputGroup,
+  Input
+} from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import myTheme from '../Themes/myTheme';
 var EXCHANGE = require('../data/exchange.js');
@@ -22,6 +43,11 @@ class announce extends Component {
   }
   // la requete prend pour paramètre l'identifiant de l'annonce sélectionnée dans la liste précédente (listAnnounces)
   componentWillMount() {
+    AsyncStorage.getItem('token').then((token) => {
+      if(!token){
+        Actions.login();
+      }
+    })
     fetch('https://littlebrocapi.herokuapp.com/api/annonce/' + this.props.annonceId).then((response) => response.json()).then((json) => {
       this.setState({
         annonce: json
@@ -29,9 +55,19 @@ class announce extends Component {
     });
   }
 
+  logout(){
+      AsyncStorage.multiRemove(['userId', 'token']);
+      Actions.login();
+  }
+
   render() {
-    return (//{title: 'Second Scene', index: 1}
-    <View style={{marginTop:55}}>
+    return (//{title: 'Second Scene', index: 1}`
+    <Content theme={myTheme} style={Styles.form}>
+    <View>
+      <InputGroup borderType='regular' iconRight disabled>
+        <Icon name='ios-arrow-forward' onPress={() => this.logout()}/>
+        <Input placeholder='Déconnexion' />
+      </InputGroup>
       <InputGroup borderType='regular' iconRight disabled>
         <Icon name='ios-arrow-forward' onPress={Actions.categories}/>
         <Input placeholder='Catégories' value={this.state.selectedCategory}/>
@@ -65,8 +101,21 @@ class announce extends Component {
         <Input placeholder='Auteur' />
       </InputGroup>
     </View>
-
+  </Content>
     )
   }
 }
+
+const Styles = StyleSheet.create({
+  form : {
+  ...Platform.select({
+    ios: {
+      marginTop: 70
+    },
+    android: {
+      marginTop: 58
+    },
+  }),
+  }
+});
 module.exports = announce;

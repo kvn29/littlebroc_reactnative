@@ -71,7 +71,7 @@ class search extends Component {
       <View style={{paddingTop: 62}}>
         <ScrollView style={{backgroundColor:'white',height:Dimensions.get('window').height-117}} automaticallyAdjustContentInsets={true}>
           {loadingMessage}
-          
+
         </ScrollView>
       </View>
     )

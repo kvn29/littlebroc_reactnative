@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Navigator
+  Navigator,
+  Platform
 } from 'react-native';
 import {
   Container,
@@ -32,6 +33,7 @@ import TabBarCustom from './ui/TabBarCustom.js'
 import Navigator_search from './navigator_search.js'
 import Navigator_favoris from './navigator_favoris.js'
 import Navigator_add from './navigator_add.js'
+import Navigator_wishList from './navigator_wishList.js'
 import Navigator_setting from './navigator_setting.js'
 
 export default class test extends Component {
@@ -43,8 +45,6 @@ export default class test extends Component {
       };
 
     }
-
-
 
     changeNavigatorByIndex(index) {
       // Cette méthode qui prend un index affiche le bon navigator selon
@@ -58,7 +58,7 @@ export default class test extends Component {
     render() {
         console.log('HEIGHT WINDOW', Dimensions.get('window').height);
         return (
-          <Container >
+          <Container theme={myTheme}>
             <Content bounces={false} style={{
                 backgroundColor: 'red',
                 position: 'absolute',
@@ -80,6 +80,9 @@ export default class test extends Component {
                       break;
                       case 2:
                         return (<Navigator_add />);
+                      break;
+                      case 3:
+                        return (<Navigator_wishList />);
                       break;
                       case 4:
                         return (<Navigator_setting />);
@@ -106,15 +109,38 @@ const Styles = StyleSheet.create({
     backgroundColor: 'red'
   },
   navigator: {
-    position:"absolute",
-    top:0,
-    left:0,
-    right:0,
-    backgroundColor: 'red',
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height-55
-  }
+      width: Dimensions.get('window').width,
+      ...Platform.select({
+        ios: {
+          position:"absolute",
+          top:0,
+          left:0,
+          right:0,
+          backgroundColor: 'white',
+          height: Dimensions.get('window').height-55
+        },
+        android: {
+          backgroundColor: 'white',
+          height: Dimensions.get('window').height-79
+        },
+      }),
+    }
 });
+// navigatorForAndroid: {
+//   backgroundColor: 'white',
+//   width: Dimensions.get('window').width,
+//   height: Dimensions.get('window').height-55
+// },
+// navigatorForIOS: {
+//   position:"absolute",
+//   top:0,
+//   left:0,
+//   right:0,
+//   backgroundColor: 'red',
+//   width: Dimensions.get('window').width,
+//   height: Dimensions.get('window').height-55
+// }
+
 
 AppRegistry.registerComponent('test', () => test);
 
