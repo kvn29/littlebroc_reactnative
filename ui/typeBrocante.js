@@ -27,6 +27,7 @@ import myTheme from '../Themes/myTheme';
 
 import { Actions } from 'react-native-router-flux';
 var test = require('../data/brocante.js');
+var EXCHANGE = require('../data/exchange.js');
 
 import CheckBoxCustom from '../ui/checkbox.js'
 
@@ -34,7 +35,8 @@ class typeBrocante extends Component {
 
   constructor(props){
     super(props);
-
+    // EXCHANGE.selectedBrocante = "zizi dur";
+    //console.log('la', GLOBAL.test);
 
     var ds = new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2,
@@ -43,10 +45,20 @@ class typeBrocante extends Component {
         dataSource: ds.cloneWithRows(test.typebrocante),
         db: test.typebrocante
     };
+    var _this = this;
+    EXCHANGE.backBrocantetypeToAnnonce = function() {
+      let getCurrentChecked = "";
+
+      for(var i=0;i<_this.state.db.length;i++) {
+        if(_this.state.db[i].checked === true) {
+          getCurrentChecked = _this.state.db[i].name;
+        }
+      }
+      // Renvoi le type de brocante à la vue announce
+      Actions.pop({refresh: {selectedBrocante: getCurrentChecked}});
+    }
   }
-  componentWillMount() {
-    this.props.mother.updateSelectedTypeBrocante();
-  }
+
   componentDidMount() {
     var data = test.typebrocante;
 
@@ -64,7 +76,9 @@ class typeBrocante extends Component {
 
     var clone = this.state.db.slice();
 
+
     for(var item in clone) {
+      clone[item].checked = false; // <- Empeche la multi selection
 
       if(clone[item].name === name) {
         //console.log("AVANT : ", clone[item].checked);
@@ -72,6 +86,7 @@ class typeBrocante extends Component {
         //console.log("APRES : ", clone[item].checked);
       }
     }
+
     var ds = new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2,
     });
