@@ -4,7 +4,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Navigator
+  Navigator,
+  ScrollView
 } from 'react-native';
 
 import {
@@ -24,7 +25,7 @@ import {
   ListItem,
   Radio
   } from 'native-base';
-
+import Dimensions from 'Dimensions';
 
 import { Actions } from 'react-native-router-flux';
 
@@ -45,42 +46,46 @@ import { Actions } from 'react-native-router-flux';
 
     render() {
       return (
-        <Content searchBar rounded style={{marginTop: 62}}>
-          <InputGroup searchBar rounded> <Icon name="ios-search" />
-            <Input placeholder="Recherche sur My Little Broc" />
-          </InputGroup>
-          <Button style={{width: 100, alignSelf: 'center', marginTop: 10}} block rounded > Recherche </Button>
-          <Grid>
-            <Col>
-              <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
-                <Text style={{color: 'white', alignSelf: 'center'}}>Table</Text>
-                <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 20 €</Text>
-              </View>
-              <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
-                <Text style={{color: 'white', alignSelf: 'center'}}>Dictionnaire</Text>
-                <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 10 €</Text>
-              </View>
-              <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
-                <Text style={{color: 'white', alignSelf: 'center'}}>CD ACDC</Text>
-                <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 40 €</Text>
-              </View>
-            </Col>
-            <Col>
-              <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
-                <Text style={{color: 'white', alignSelf: 'center'}}>Blouson en Cuir</Text>
-                <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 60 €</Text>
-              </View>
-              <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
-                <Text style={{color: 'white', alignSelf: 'center'}}>Assiettes</Text>
-                <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 5 €</Text>
-              </View>
-              <View style={{maxWidth: 200, height: 180, backgroundColor: '#d7d7d7', margin: 2}}>
-                <Text style={{color: 'white', alignSelf: 'center'}}>Benzai</Text>
-                <Text style={{color: 'white', alignSelf: 'center'}}>Prix : 43 €</Text>
-              </View>
-            </Col>
-          </Grid>
-        </Content>
+        <View style={{paddingTop: 62}}>
+          <ScrollView style={{backgroundColor:'blue',height:Dimensions.get('window').height-117}} automaticallyAdjustContentInsets={true}>
+          <Text>aa</Text>
+          <Text>aa</Text>
+          <Text>aa</Text>
+          <Text>aa</Text>
+          <Text>aa</Text>
+          <Text>aa</Text>
+          <Text>aa</Text>
+          <Text>aa</Text>
+          <Text>aa</Text>
+            <Text>aa</Text>
+            <Text>aa</Text>
+            <Text>aa</Text>
+            <Text>aa</Text>
+            <Text>aa</Text>
+            <Text>aa</Text>
+            <Text>aa</Text>
+            <Text>aa</Text>
+            <Text>aa</Text>
+              <Text>aa</Text>
+              <Text>aa</Text>
+              <Text>aa</Text>
+              <Text>aa</Text>
+              <Text>aa</Text>
+              <Text>aa</Text>
+              <Text>aa</Text>
+              <Text>aa</Text>
+              <Text>aa</Text>
+                <Text>aa</Text>
+                <Text>aa</Text>
+                <Text>aa</Text>
+                <Text>aa</Text>
+                <Text>aa</Text>
+                <Text>aa</Text>
+                <Text>aa</Text>
+                <Text>aa</Text>
+                <Text>isa</Text>
+            </ScrollView>
+        </View>
       )
     }
   }
@@ -89,10 +94,7 @@ import { Actions } from 'react-native-router-flux';
     marginBottom: 5,
     borderRadius: 0,
     backgroundColor:  '#376092',
-    alignSelf: 'stretch',
-
-
-
+    alignSelf: 'stretch'
   },
   red: {
     color: 'red',

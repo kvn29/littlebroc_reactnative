@@ -50,57 +50,20 @@ class login extends Component {
     }).done();
   }
 
-  // cette fonction vérifie si l'utilisateur est déjà connecté, si oui la page de connexion ne s'affiche pas
-  componentWillMount() {
-    var token;
-    AsyncStorage.multiGet(['token', 'userId']).then((data) => {
-      if (data[0][1]) {
-        token = data[0][1];
-        return this.getUser(data[1][1]);
-      }
-    }).then((user) => {
-      if(user){
-        return user.json();
-      }else{
-        return null;
-      }
-    }).then((user) => {
-      this.setState({
-        user: user,
-        token: token
-      })
-    })
-
-  }
-
-  getUser(userId) {
-    return fetch('https://littlebrocapi.herokuapp.com/api/member/' + userId, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    });
-  }
-
   render() {
-    if (!this.state.token) {
-      return (
-        <Content theme={myTheme}>
-        <View style={{marginTop:55}}>
-          <TextInput onChangeText={(user) => this.setState({user})} value={this.state.email} placeholder='Votre email' />
-          <TextInput onChangeText={(password) => this.setState({password})} value={this.state.password} placeholder='Votre mot de passe' />
-          <Button title="Valider" onPress={() => this.submitCredentials(this.state)} />
-          <InputGroup borderType='regular' iconRight disabled>
-            <Icon name='ios-arrow-forward' onPress={Actions.createMember}/>
-            <Input placeholder='Créer un compte' />
-          </InputGroup>
-        </View>
-        </Content>
-      );
-    } else {
-
-    }
+    return (
+      <Content theme={myTheme}>
+      <View style={{marginTop:55}}>
+        <TextInput onChangeText={(user) => this.setState({user})} value={this.state.email} placeholder='Votre email' />
+        <TextInput onChangeText={(password) => this.setState({password})} value={this.state.password} placeholder='Votre mot de passe' />
+        <Button title="Valider" onPress={() => this.submitCredentials(this.state)} />
+        <InputGroup borderType='regular' iconRight disabled>
+          <Icon name='ios-arrow-forward' onPress={Actions.createMember}/>
+          <Input placeholder='Créer un compte' />
+        </InputGroup>
+      </View>
+      </Content>
+    );
   }
 }
 

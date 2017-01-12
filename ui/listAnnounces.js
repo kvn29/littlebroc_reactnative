@@ -14,7 +14,6 @@ class listAnnounces extends Component {
     }
 
     componentWillMount() {
-      console.log(AsyncStorage.getItem('token'));
       fetch('https://littlebrocapi.herokuapp.com/api/annonce').then((response) => response.json()).then((json) => {
         this.setState({
           annonces: json

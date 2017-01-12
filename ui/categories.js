@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
   AppRegistry,
   StyleSheet,
@@ -26,13 +27,15 @@ import myTheme from '../Themes/myTheme';
 
 import { Actions } from 'react-native-router-flux';
 var test = require('../data/categoryData.js');
+var EXCHANGE = require('../data/exchange.js');
 
 import CheckBoxCustom from '../ui/checkbox.js'
 
 class categories extends Component {
 
-  constructor(props) {
+  constructor(props){
     super(props);
+
     var ds = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2,
     });
@@ -40,7 +43,25 @@ class categories extends Component {
       dataSource: ds.cloneWithRows(test.category),
       db: test.category
     };
+    var _this = this;
+    EXCHANGE.backCategorieToAnnonce = function(){
+      let getCurrentChecked = "";
+
+      for(var i=0;i<_this.state.db.length;i++) {
+        if(_this.state.db[i].checked === true) {
+          getCurrentChecked =_this.state.db[i].name;
+        }
+      }
+      //Renvoi le type de catégorie à la vue announce
+      Actions.pop({refresh: {selectedCategory: getCurrentChecked}});
+    }
   }
+  // componentWillReceiveProps( nextProps ) {
+  //   this.setState({
+  //       dataSource: this.state.dataSource.cloneWithRows( nextProps.donnees )
+  //   });
+  // }
+
 
   componentDidMount(){
     var data = test.category;
@@ -58,12 +79,14 @@ class categories extends Component {
   toggleSwitch(name) {
 
     var clone = this.state.db.slice();
+
     for(var item in clone) {
-      // console.log(clone[item]);
+      clone[item].checked = false; // <- Empêche la multi-sélection
+
       if(clone[item].name === name) {
-        console.log("AVANT : ", clone[item].checked);
+        //console.log("AVANT : ", clone[item].checked);
         clone[item].checked = !clone[item].checked;
-        console.log("APRES : ", clone[item].checked);
+        //console.log("APRES : ", clone[item].checked);
       }
     }
     var ds = new ListView.DataSource({
@@ -76,8 +99,25 @@ class categories extends Component {
     });
   }
 
+
   // Ce qu'on veut faire : Lors du clic sur listitem, on coche la case interne.
   // En passant a la checkbox componont le nom de la fonction parent l'enfant peut déclencher une méthode du parent
+  renderItem(item) {
+    console.log('RENDER-ROW ICI');
+     return (
+        <TouchableHighlight onPress={this.toggleSwitch.bind(this, item.name)}>
+            <View>
+                <View style={Styles.container}>
+                    <View style={Styles.rightContainer}>
+                        <Text>{item.name} {item.checked.toString()}</Text>
+                        <CheckBox checked={item.checked} />
+                    </View>
+                </View>
+                <View style={Styles.separator} />
+            </View>
+        </TouchableHighlight>
+      );
+  }
 
     renderBook(item) {
       return(
@@ -118,7 +158,7 @@ class categories extends Component {
           );
       }
     }
-  }
+}
 
   // Définition du style
   const Styles = StyleSheet.create({
