@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
   AppRegistry,
   StyleSheet,
@@ -32,7 +33,7 @@ import CheckBoxCustom from '../ui/checkbox.js'
 
 class categories extends Component {
 
-  constructor(props) {
+  constructor(props){
     super(props);
 
     var ds = new ListView.DataSource({
@@ -55,6 +56,12 @@ class categories extends Component {
       Actions.pop({refresh: {selectedCategory: getCurrentChecked}});
     }
   }
+  // componentWillReceiveProps( nextProps ) {
+  //   this.setState({
+  //       dataSource: this.state.dataSource.cloneWithRows( nextProps.donnees )
+  //   });
+  // }
+
 
   componentDidMount(){
     var data = test.category;
@@ -92,8 +99,25 @@ class categories extends Component {
     });
   }
 
+
   // Ce qu'on veut faire : Lors du clic sur listitem, on coche la case interne.
   // En passant a la checkbox componont le nom de la fonction parent l'enfant peut déclencher une méthode du parent
+  renderItem(item) {
+    console.log('RENDER-ROW ICI');
+     return (
+        <TouchableHighlight onPress={this.toggleSwitch.bind(this, item.name)}>
+            <View>
+                <View style={Styles.container}>
+                    <View style={Styles.rightContainer}>
+                        <Text>{item.name} {item.checked.toString()}</Text>
+                        <CheckBox checked={item.checked} />
+                    </View>
+                </View>
+                <View style={Styles.separator} />
+            </View>
+        </TouchableHighlight>
+      );
+  }
 
     renderBook(item) {
       return(
@@ -134,7 +158,7 @@ class categories extends Component {
           );
       }
     }
-  }
+}
 
   // Définition du style
   const Styles = StyleSheet.create({

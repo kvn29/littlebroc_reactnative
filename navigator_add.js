@@ -24,6 +24,7 @@ import announce from './ui/announce.js'
 import categories from './ui/categories.js'
 import typeBrocante from './ui/typeBrocante.js'
 
+
 class Navigator_search extends Component {
   constructor(props) {
     super(props);
