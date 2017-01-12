@@ -31,7 +31,7 @@ class Navigator_favoris extends Component {
   }
   render() {
     return (
-      <Router>
+      <Router titleStyle={{color:'#376092'}}>
         <Scene key="root">
           <Scene key="favoris" component={favoris} title="Favoris" initial={true} />
           <Scene key="announce" component={announce} title="Annonce" />

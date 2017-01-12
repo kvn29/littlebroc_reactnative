@@ -3,16 +3,22 @@ import { AppRegistry, StyleSheet, Text, View, Navigator, Image } from 'react-nat
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Icon, Badge, InputGroup, Input } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import myTheme from '../Themes/myTheme';
-
+var GLOBAL = require('../data/exchange.js');
 class announce extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       annonce: {}
     };
   }
-
+  componentWillReceiveProps(nextProps) {
+    console.log('là array', nextProps.selectedBrocante);
+    this.setState({
+      selectedBrocante: nextProps.selectedBrocante
+    })
+  }
   // la requete prend pour paramètre l'identifiant de l'annonce sélectionnée dans la liste précédente (listAnnounces)
   componentWillMount() {
     fetch('https://littlebrocapi.herokuapp.com/api/annonce/' + this.props.annonceId).then((response) => response.json()).then((json) => {
@@ -47,7 +53,7 @@ class announce extends Component {
       </InputGroup>
       <InputGroup borderType='regular' iconRight disabled>
         <Icon name='ios-arrow-forward' onPress={Actions.typeBrocante}/>
-        <Input placeholder='Type de Brocante' />
+        <Input placeholder='Type de Brocante' value={this.state.selectedBrocante}/>
       </InputGroup>
       <InputGroup borderType='regular' iconRight disabled>
         <Icon name='ios-locate-outline'/>

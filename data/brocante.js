@@ -2,7 +2,7 @@ const tabl = {
   "typebrocante":[
     {
       name: "Brocante",
-      checked: true
+      checked: false
     },
     {
       name: "Vide-Grenier",
@@ -21,7 +21,7 @@ const tabl = {
       checked: false
     },
     {
-      name: "Bouse périculture",
+      name: "Bourse périculture",
       checked: false
     },
     {
