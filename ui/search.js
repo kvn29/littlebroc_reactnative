@@ -46,7 +46,7 @@ import { Actions } from 'react-native-router-flux';
 
     render() {
       return (
-        <View style={{paddingTop: 62}}>
+        <View style={{marginTop: 62}}>
           <ScrollView style={{backgroundColor:'blue',height:Dimensions.get('window').height-117}} automaticallyAdjustContentInsets={true}>
           <Text>aa</Text>
           <Text>aa</Text>
