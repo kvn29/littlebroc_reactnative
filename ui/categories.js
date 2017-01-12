@@ -27,6 +27,7 @@ import myTheme from '../Themes/myTheme';
 
 import { Actions } from 'react-native-router-flux';
 var test = require('../data/categoryData.js');
+var EXCHANGE = require('../data/exchange.js');
 
 import CheckBoxCustom from '../ui/checkbox.js'
 
@@ -34,6 +35,7 @@ class categories extends Component {
 
   constructor(props){
     super(props);
+
     var ds = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2,
     });
@@ -41,6 +43,18 @@ class categories extends Component {
       dataSource: ds.cloneWithRows(test.category),
       db: test.category
     };
+    var _this = this;
+    EXCHANGE.backCategorieToAnnonce = function(){
+      let getCurrentChecked = "";
+
+      for(var i=0;i<_this.state.db.length;i++) {
+        if(_this.state.db[i].checked === true) {
+          getCurrentChecked =_this.state.db[i].name;
+        }
+      }
+      //Renvoi le type de catégorie à la vue announce
+      Actions.pop({refresh: {selectedCategory: getCurrentChecked}});
+    }
   }
   // componentWillReceiveProps( nextProps ) {
   //   this.setState({
@@ -67,13 +81,12 @@ class categories extends Component {
     var clone = this.state.db.slice();
 
     for(var item in clone) {
-      // console.log(clone[item]);
-      if(clone[item].name === name) {
-        console.log("AVANT : ", clone[item].checked);
-        clone[item].checked = !clone[item].checked;
-        this.renderItem(clone[item]);
+      clone[item].checked = false; // <- Empêche la multi-sélection
 
-        console.log("APRES : ", clone[item].checked);
+      if(clone[item].name === name) {
+        //console.log("AVANT : ", clone[item].checked);
+        clone[item].checked = !clone[item].checked;
+        //console.log("APRES : ", clone[item].checked);
       }
     }
     var ds = new ListView.DataSource({
