@@ -1,86 +1,88 @@
 import React, { Component } from 'react';
-import {
-  AsyncStorage,
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Navigator
-} from 'react-native';
-
-import {
-  Container,
-  Header,
-  Title,
-  Content,
-  Footer,
-  FooterTab,
-  Button,
-  Icon,
-  Badge,
-  InputGroup,
-  Input,
-  List,
-  ListItem,
-  Thumbnail
-  } from 'native-base';
-
+import { AsyncStorage, AppRegistry, StyleSheet, Text, Button, View, Navigator } from 'react-native';
+import { Container, Header, Title, Content, Footer, FooterTab, Icon, Badge, InputGroup, Input, List, ListItem, Thumbnail } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 import myTheme from '../Themes/myTheme';
 
-import { Actions } from 'react-native-router-flux';
+class profil extends Component {
 
-const profilPhoto = require('../img/Pierre_Girard.jpg');
-
-  class profil extends Component {
-
-    constructor(props) {
-      super(props);
-    }
-
-    componentWillMount() {
-      AsyncStorage.getItem('token').then((token) => {
-        if(!token){
-          Actions.login();
-        }
-      })
-    }
-
-    render() {
-      return (//{title: 'Second Scene', index: 1}
-      <Content theme={myTheme}>
-      <View style={{marginTop:55}}>
-        <List>
-        <ListItem>
-          <Thumbnail square size={100} source={profilPhoto} style={{marginTop:10}}/>
-          <Text style={{color:'#376092', fontWeight: 'bold', marginTop:30}}>PierreG</Text>
-        </ListItem>
-        <InputGroup borderType='regular'>
-          <Input inlineLabel label="Nom" placeholder='Girard' />
-        </InputGroup>
-        <InputGroup borderType='regular'>
-          <Input inlineLabel label="Prénom" placeholder='Pierre' />
-        </InputGroup>
-        <InputGroup borderType='regular'>
-          <Input inlineLabel label="Adresse" placeholder='45 rue de château 28456 Chartres' />
-        </InputGroup>
-        <InputGroup borderType='regular'>
-          <Input inlineLabel label="E-mail" placeholder='girardpierre@gmail.com' />
-        </InputGroup>
-        <InputGroup borderType='regular'>
-          <Input inlineLabel label="Date de naissance" placeholder='16/05/1987' />
-        </InputGroup>
-        <InputGroup borderType='regular'>
-          <Input inlineLabel label="Téléphone" placeholder='0998876543' />
-        </InputGroup>
-        <InputGroup borderType='regular'>
-          <Input inlineLabel label="Mot de passe" placeholder='*********' />
-        </InputGroup>
-        </List>
-      </View>
-    </Content>
-
-      )
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: null,
+      memberID: null,
+      member: {},
+      pseudo : null,
+      lastName : null,
+      firstName : null,
+      email : null,
+      phone: null,
+      password: null
+    };
   }
 
-  module.exports = profil;
+  componentWillMount() {
+    AsyncStorage.multiGet(['token', 'userId']).then((data) => {
+      if(!data[0][1]){
+        Actions.login();
+      } else {
+        this.setState({
+          token: data[0][1],
+          memberID: data[1][1]
+        });
+        fetch('https://littlebrocapi.herokuapp.com/api/member/' + this.state.memberID).then((response) => response.json()).then((json) => {
+          this.setState({
+            member: json
+          });
+        });
+      }
+    });
+  }
+
+  updateMember(user){
+    fetch('https://littlebrocapi.herokuapp.com/api/member/' + this.state.memberID, {
+    	method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+    	body: JSON.stringify({
+        lastName : user.lastName
+      })
+    })
+  }
+
+  render() {
+    return (//{title: 'Second Scene', index: 1}
+    <Content theme={myTheme}>
+    <View style={{marginTop:55}}>
+      <List>
+      <ListItem>
+        <Thumbnail square size={100} source={{uri : this.state.member.img}} style={{marginTop:10}}/>
+        <Input style={{color:'#376092', fontWeight: 'bold', marginTop:30}} placeholder={this.state.member.pseudo} />
+      </ListItem>
+      <InputGroup borderType='regular'>
+        <Input onChangeText={(lastName) => this.setState({lastName})} value={this.state.lastName} placeholder={this.state.member.lastName} />
+      </InputGroup>
+      <InputGroup borderType='regular'>
+        <Input placeholder={this.state.member.firstName} />
+      </InputGroup>
+      <InputGroup borderType='regular'>
+        <Input placeholder={this.state.member.email} />
+      </InputGroup>
+      <InputGroup borderType='regular'>
+        <Input placeholder={this.state.member.phone} />
+      </InputGroup>
+      <InputGroup borderType='regular'>
+        <Input placeholder="Nouveau mot de passe" />
+      </InputGroup>
+      </List>
+    </View>
+    <Button title="Modifier" onPress={() => this.updateMember(this.state)} />
+  </Content>
+
+    )
+  }
+}
+
+module.exports = profil;
