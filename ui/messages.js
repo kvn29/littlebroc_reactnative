@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  AsyncStorage,
   AppRegistry,
   StyleSheet,
   Text,
@@ -33,6 +34,14 @@ const profil = require('../img/Pierre_Girard.jpg');
       super(props);
     }
 
+    componentWillMount() {
+      AsyncStorage.getItem('token').then((token) => {
+        if(!token){
+          Actions.login();
+        }
+      })
+    }
+
     render() {
       return (//{title: 'Second Scene', index: 1}
       <Content style={{marginTop: 55}} >
@@ -47,7 +56,7 @@ const profil = require('../img/Pierre_Girard.jpg');
         <Thumbnail square size={80} iconRight source={profil}/>
         <Icon name='ios-chatbubbles' onPress={Actions.messages}/>
           <Text>PierreG</Text>
-          <Text note>Bonjour, il fait beau chez vous ?</Text> 
+          <Text note>Bonjour, il fait beau chez vous ?</Text>
         </ListItem>
         <ListItem>
         <Thumbnail square size={80} iconRight source={profil}/>

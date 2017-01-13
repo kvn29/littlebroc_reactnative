@@ -21,7 +21,7 @@ import { Router, Scene } from 'react-native-router-flux';
 
 import setting from './ui/setting.js'
 import profil from './ui/profil.js'
-import myAnnounce from './ui/myAnnounce.js'
+import myAnnounce from './ui/listAnnounces.js'
 import messages from './ui/messages.js'
 import login from './ui/login.js'
 import createMember from './ui/createMember.js'

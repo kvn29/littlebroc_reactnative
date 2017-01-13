@@ -39,17 +39,26 @@ constructor(props) {
   super(props);
   this.state = {
     member: {},
-    memberID : '586fc63ec3d59a00118bb0e0',
+    memberID : null,
     isAdmin: false
   };
 }
 
 componentWillMount() {
-  fetch('https://littlebrocapi.herokuapp.com/api/member/' + this.state.memberID ).then((response) => response.json()).then((json) => {
-    this.setState({
-      member: json,
-      isAdmin: json.admin
-    });
+  AsyncStorage.multiGet(['token', 'userId']).then((data) => {
+    if(!data[0][1]){
+      Actions.login();
+    } else {
+      this.setState({
+        memberID: data[1][1]
+      });
+      fetch('https://littlebrocapi.herokuapp.com/api/member/' + this.state.memberID).then((response) => response.json()).then((json) => {
+        this.setState({
+          member: json,
+          isAdmin: json.admin
+        });
+      });
+    }
   });
 }
 
@@ -57,7 +66,6 @@ render() {
   return (//{title: 'Second Scene', index: 1}
     <Content theme={myTheme} style={styles.margin}>
           <Image style={{ resizeMode: 'cover', width: 100, height: 100 }} source={{uri : this.state.member.img}}></Image>
-          <Text> {this.state.member.img} </Text>
       <View style={styles.center} >
          <Button style={styles.centerBtn} onPress={Actions.profil}>
         <Icon name='ios-contact'/>

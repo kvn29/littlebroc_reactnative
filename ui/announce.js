@@ -65,10 +65,6 @@ class announce extends Component {
     <Content theme={myTheme} style={Styles.form}>
     <View>
       <InputGroup borderType='regular' iconRight disabled>
-        <Icon name='ios-arrow-forward' onPress={() => this.logout()}/>
-        <Input placeholder='Déconnexion' />
-      </InputGroup>
-      <InputGroup borderType='regular' iconRight disabled>
         <Icon name='ios-arrow-forward' onPress={Actions.categories}/>
         <Input placeholder='Catégories' value={this.state.selectedCategory}/>
       </InputGroup>
@@ -99,6 +95,10 @@ class announce extends Component {
       <InputGroup borderType='regular' iconRight disabled>
         <Icon name='ios-chatbubbles'/>
         <Input placeholder='Auteur' />
+      </InputGroup>
+      <InputGroup borderType='regular' iconRight disabled>
+        <Icon name='ios-arrow-forward' onPress={() => this.logout()}/>
+        <Input placeholder='Déconnexion' />
       </InputGroup>
     </View>
   </Content>
