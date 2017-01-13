@@ -6,7 +6,8 @@ import {
   View,
   Navigator,
   ScrollView,
-  ActivityIndicator
+  ActivityIndicator,
+  ListView
 } from 'react-native';
 
 import {
@@ -27,6 +28,8 @@ import {
   Radio
   } from 'native-base';
 import Dimensions from 'Dimensions';
+import GridAnnounce from './gridannounce.js';
+
 var EXCHANGE = require('../data/exchange.js');
 import { Actions } from 'react-native-router-flux';
 
@@ -37,6 +40,7 @@ class search extends Component {
     // States Informations :
     // showLoadingMessage: Boolean:  à montrer ou non la roue de chargement au démarrage
     // annonces: Array: Contient les annonces
+
     this.state = {
       showLoadingMessage: true,
       annonces: []
@@ -46,6 +50,12 @@ class search extends Component {
     EXCHANGE.showSearchEngine = function() {
       Actions.announce();
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // C'est ici que sont recu les nouvelles données provenant de la vue moteur de recherche
+    // Ici on recoit les critères de recherche pour une nouvelle recherche
+    console.log('Nouveaux critères de recherche :', nextProps.criteresDeRecherche);
   }
 
   componentWillMount() {
@@ -76,7 +86,7 @@ class search extends Component {
       <View style={{paddingTop: 62}}>
         <ScrollView style={{backgroundColor:'white',height:Dimensions.get('window').height-117}} automaticallyAdjustContentInsets={true}>
           {loadingMessage}
-
+          <GridAnnounce annonces={this.state.annonces}/>
         </ScrollView>
       </View>
     )
@@ -87,7 +97,16 @@ const styles = StyleSheet.create({
     textAlign:'center',
     fontWeight:'bold',
     color: '#666'
-  }
+  },
+  list: {
+        flexDirection: 'row',
+        flexWrap: 'wrap'
+    },
+    item: {
+        backgroundColor: 'red',
+        margin: 3,
+        width: 30
+    }
 });
 
 module.exports = search;

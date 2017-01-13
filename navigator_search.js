@@ -59,7 +59,7 @@ class Navigator_search extends Component {
             onBack={() => {Actions.pop()}}
             hideBackImage={true}
             backTitle="Annuler"
-            rightTitle="OK" onRight={() => {}}
+            rightTitle="OK" onRight={() => EXCHANGE.backSearchEngineToSearch()}
             rightButtonTextStyle = {{color: '#376092'}}
             backButtonTextStyle = {{color: '#376092'}}/>
         </Scene>

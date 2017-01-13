@@ -35,10 +35,10 @@ class Navigator_favoris extends Component {
     return (
       <Router titleStyle={{color:'#376092'}}>
         <Scene key="root">
-          <Scene key="login" component={login} title="Connexion" />
-          <Scene key="createMember" component={createMember} title="Nouvel utilisateur" />
-          <Scene key="favoris" component={favoris} title="Favoris" initial={true}/>
-          <Scene key="announce" component={announce} title="Annonce" />
+          <Scene key="login" component={login} title="Connexion" titleStyle={{fontWeight: 'bold'}}/>
+          <Scene key="createMember" component={createMember} title="Nouvel utilisateur" titleStyle={{fontWeight: 'bold'}}/>
+          <Scene key="favoris" component={favoris} title="Favoris" initial={true} titleStyle={{fontWeight: 'bold'}}/>
+          <Scene key="announce" component={announce} title="Annonce" titleStyle={{fontWeight: 'bold'}}/>
         </Scene>
       </Router>
     );

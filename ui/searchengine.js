@@ -23,6 +23,7 @@ import {
 //   ListItem,
 //   Radio
 //   } from 'native-base';
+var EXCHANGE = require('../data/exchange.js');
 
 import { Actions } from 'react-native-router-flux';
 
@@ -31,9 +32,12 @@ class searchengine extends Component {
   constructor(props) {
     super(props);
 
+    EXCHANGE.backSearchEngineToSearch = function () {
+      // Renvoi des critères de recherche à la vue précédente (Search (Résultat de recherche))
+      Actions.pop({refresh: {criteresDeRecherche : "a"}})
+    }
+
   }
-
-
 
   render() {
     return (

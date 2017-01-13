@@ -37,12 +37,12 @@ class Navigator_setting extends Component {
     return (
       <Router titleStyle={{color:'#376092'}}>
         <Scene key="root">
-          <Scene key="login" component={login} title="Connexion" />
-          <Scene key="createMember" component={createMember} title="Nouvel utilisateur" />
-          <Scene key="setting" component={setting} title="Paramètres" initial={true}/>
-          <Scene key="profil" component={profil} title="Mon profil" />
-          <Scene key="myAnnounce" component={myAnnounce} title="Mes annonces" />
-          <Scene key="messages" component={messages} title="Mes messages" />
+          <Scene key="login" component={login} title="Connexion" titleStyle={{fontWeight: 'bold'}}/>
+          <Scene key="createMember" component={createMember} title="Nouvel utilisateur" titleStyle={{fontWeight: 'bold'}}/>
+          <Scene key="setting" component={setting} title="Paramètres" initial={true} titleStyle={{fontWeight: 'bold'}}/>
+          <Scene key="profil" component={profil} title="Mon profil" titleStyle={{fontWeight: 'bold'}}/>
+          <Scene key="myAnnounce" component={myAnnounce} title="Mes annonces" titleStyle={{fontWeight: 'bold'}}/>
+          <Scene key="messages" component={messages} title="Mes messages" titleStyle={{fontWeight: 'bold'}}/>
         </Scene>
       </Router>
     )

@@ -39,7 +39,7 @@ class Navigator_add extends Component {
     return (
       <Router titleStyle={{color:'#376092'}}>
         <Scene key="root">
-          <Scene key="announce" component={announce} title="Annonce" initial={true}  />
+          <Scene key="announce" component={announce} title="Annonce" initial={true} titleStyle={{fontWeight: 'bold'}} />
           <Scene key="categories"
             component={categories}
             title="Catégories"
@@ -48,7 +48,8 @@ class Navigator_add extends Component {
             rightButtonTextStyle = {{color: '#376092'}}
             onRight={()=>EXCHANGE.backCategorieToAnnonce() }
             onBack={() => Actions.pop()}
-            leftButtonIconStyle = {{ tintColor:'#376092'}}/>
+            leftButtonIconStyle = {{ tintColor:'#376092'}}
+            titleStyle={{fontWeight: 'bold'}}/>
           <Scene key="typeBrocante"
             component={typeBrocante}
             title="Type de Brocante"
@@ -57,10 +58,11 @@ class Navigator_add extends Component {
             rightButtonTextStyle = {{color: '#376092'}}
             onRight={()=> EXCHANGE.backBrocantetypeToAnnonce() }
             onBack={() => Actions.pop()}
-            leftButtonIconStyle = {{ tintColor:'#376092'}}/>
+            leftButtonIconStyle = {{ tintColor:'#376092'}}
+            titleStyle={{fontWeight: 'bold'}}/>
         </Scene>
-        <Scene key="login" component={login} title="Connexion"/>
-        <Scene key="createMember" component={createMember} title="Créer un compte"/>
+        <Scene key="login" component={login} title="Connexion" titleStyle={{fontWeight: 'bold'}}/>
+        <Scene key="createMember" component={createMember} title="Créer un compte" titleStyle={{fontWeight: 'bold'}}/>
       </Router>
     )
   }
