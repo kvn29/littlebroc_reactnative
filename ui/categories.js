@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import {
+  AsyncStorage,
   AppRegistry,
   StyleSheet,
   Text,
@@ -97,6 +98,14 @@ class categories extends Component {
       dataSource: ds.cloneWithRows(clone),
       db : clone
     });
+  }
+
+  componentWillMount() {
+    AsyncStorage.getItem('token').then((token) => {
+      if(!token){
+        Actions.login();
+      }
+    })
   }
 
 

@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import {
+  AsyncStorage,
   AppRegistry,
   StyleSheet,
   Text,
@@ -68,6 +69,14 @@ class typeBrocante extends Component {
       dataSource: ds.cloneWithRows(data),
       db : test.typebrocante
     });
+  }
+
+  componentWillMount() {
+    AsyncStorage.getItem('token').then((token) => {
+      if(!token){
+        Actions.login();
+      }
+    })
   }
 
   toggleSwitch(name) {

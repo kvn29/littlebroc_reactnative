@@ -45,6 +45,11 @@ constructor(props) {
 }
 
 componentWillMount() {
+  AsyncStorage.getItem('token').then((token) => {
+    if(!token){
+      Actions.login();
+    }
+  })
   fetch('https://littlebrocapi.herokuapp.com/api/member/' + this.state.memberID ).then((response) => response.json()).then((json) => {
     this.setState({
       member: json,

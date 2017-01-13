@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  AsyncStorage,
   AppRegistry,
   StyleSheet,
   Text,
@@ -34,6 +35,14 @@ const profilPhoto = require('../img/Pierre_Girard.jpg');
 
     constructor(props) {
       super(props);
+    }
+
+    componentWillMount() {
+      AsyncStorage.getItem('token').then((token) => {
+        if(!token){
+          Actions.login();
+        }
+      })
     }
 
     render() {
@@ -73,8 +82,5 @@ const profilPhoto = require('../img/Pierre_Girard.jpg');
       )
     }
   }
-  // <View><Text onPress={() => {
-  //   this.props.navigator.push({title: 'Second Scene', index: 1});
-  // }}>VUE 1</Text></View>
 
   module.exports = profil;
