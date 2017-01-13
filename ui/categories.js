@@ -14,13 +14,8 @@ import {
   Content,
   List,
   ListItem,
-  Thumbnail,
-  InputGroup,
-  Icon,
-  Input,
   CheckBox,
-  Radio,
-  Button
+  Radio
   } from 'native-base';
 
 import myTheme from '../Themes/myTheme';
@@ -29,7 +24,6 @@ import { Actions } from 'react-native-router-flux';
 var test = require('../data/categoryData.js');
 var EXCHANGE = require('../data/exchange.js');
 
-import CheckBoxCustom from '../ui/checkbox.js'
 
 class categories extends Component {
 
@@ -56,11 +50,6 @@ class categories extends Component {
       Actions.pop({refresh: {selectedCategory: getCurrentChecked}});
     }
   }
-  // componentWillReceiveProps( nextProps ) {
-  //   this.setState({
-  //       dataSource: this.state.dataSource.cloneWithRows( nextProps.donnees )
-  //   });
-  // }
 
 
   componentDidMount(){
@@ -102,38 +91,19 @@ class categories extends Component {
 
   // Ce qu'on veut faire : Lors du clic sur listitem, on coche la case interne.
   // En passant a la checkbox componont le nom de la fonction parent l'enfant peut déclencher une méthode du parent
-  renderItem(item) {
-    console.log('RENDER-ROW ICI');
-     return (
-        <TouchableHighlight onPress={this.toggleSwitch.bind(this, item.name)}>
-            <View>
-                <View style={Styles.container}>
-                    <View style={Styles.rightContainer}>
-                        <Text>{item.name} {item.checked.toString()}</Text>
-                        <CheckBox checked={item.checked} />
-                    </View>
-                </View>
-                <View style={Styles.separator} />
-            </View>
-        </TouchableHighlight>
-      );
-  }
-
     renderBook(item) {
       return(
-        <Content theme={myTheme}>
         <TouchableHighlight onPress={() => this.toggleSwitch(item.name)}>
           <View>
-            <View style={Styles.container}>
-              <View style= {Styles.rightContainer}>
+            <List>
+              <ListItem onPress={() => this.toggleSwitch(item.name)}>
+                {/*<CheckBox checked={item.checked} onPress={() => this.toggleSwitch(item.name)} />*/}
+                <Radio selected={item.checked} onPress={() => this.toggleSwitch(item.name)}/>
                 <Text style={{color:'#376092'}}>{item.name}</Text>
-                <CheckBox checked={item.checked} onPress={() => this.toggleSwitch(item.name)} />
-              </View>
-            </View>
-            <View style={Styles.separator} />
+              </ListItem>
+            </List>
           </View>
         </TouchableHighlight>
-      </Content>
       );
     }
     render() {
@@ -160,25 +130,10 @@ class categories extends Component {
     }
 }
 
-  // Définition du style
-  const Styles = StyleSheet.create({
-    listView: {
-      backgroundColor: '#f7f7f7',
-    },
-    separator: {
-      height: 1,
-      backgroundColor: '#7f7f7f'
-    },
-    container: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#f7f7f7',
-        padding: 10
-    },
-    rightContainer: {
-        flex: 1
-    }
-  });
-  module.exports = categories;
+// Définition du style
+const Styles = StyleSheet.create({
+  listView: {
+    backgroundColor: '#f7f7f7',
+  }
+});
+module.exports = categories;

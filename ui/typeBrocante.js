@@ -1,5 +1,5 @@
-
 import React, { Component } from 'react';
+
 import {
   AppRegistry,
   StyleSheet,
@@ -14,13 +14,8 @@ import {
   Content,
   List,
   ListItem,
-  Thumbnail,
-  InputGroup,
-  Icon,
-  Input,
   CheckBox,
-  Radio,
-  Button
+  Radio
   } from 'native-base';
 
 import myTheme from '../Themes/myTheme';
@@ -29,7 +24,6 @@ import { Actions } from 'react-native-router-flux';
 var test = require('../data/brocante.js');
 var EXCHANGE = require('../data/exchange.js');
 
-import CheckBoxCustom from '../ui/checkbox.js'
 
 class typeBrocante extends Component {
 
@@ -98,19 +92,17 @@ class typeBrocante extends Component {
 
   renderBook(item) {
      return (
-       <Content theme={myTheme}>
             <TouchableHighlight onPress={() => this.toggleSwitch(item.name)}>
                 <View>
-                    <View style={Styles.container}>
-                        <View style={Styles.rightContainer}>
-                            <CheckBox checked={item.checked} onPress={() => this.toggleSwitch(item.name)} />
-                            <Text style={{color:'#376092'}}>{item.name}</Text>
-                        </View>
-                    </View>
-                    <View style={Styles.separator} />
+                    <List>
+                      <ListItem onPress={() => this.toggleSwitch(item.name)}>
+                        {/*}<CheckBox checked={item.checked} onPress={() => this.toggleSwitch(item.name)} />*/}
+                        <Radio selected={item.checked} onPress={() => this.toggleSwitch(item.name)}/>
+                        <Text style={{color:'#376092'}}>{item.name}</Text>
+                      </ListItem>
+                    </List>
                 </View>
             </TouchableHighlight>
-        </Content>
        );
      }
 
@@ -122,6 +114,7 @@ class typeBrocante extends Component {
               <ListView dataSource={this.state.dataSource}
                         renderRow={this.renderBook.bind(this)}
                         style={Styles.listView}
+                        removeClippedSubviews={false}
                         />
             </View>
           </Content>
@@ -143,21 +136,6 @@ class typeBrocante extends Component {
 const Styles = StyleSheet.create({
   listView: {
     backgroundColor: '#f7f7f7',
-  },
-  separator: {
-    height: 1,
-    backgroundColor: '#7f7f7f'
-  },
-  container: {
-      flex: 1,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#f7f7f7',
-      padding: 10
-  },
-  rightContainer: {
-      flex: 1
   }
 });
 module.exports = typeBrocante;

@@ -47,7 +47,7 @@ class Navigator_add extends Component {
             rightTitle="OK"
             rightButtonTextStyle = {{color: '#376092'}}
             onRight={()=>EXCHANGE.backCategorieToAnnonce() }
-            onBack={() =>  Actions.pop()}
+            onBack={() => Actions.pop()}
             leftButtonIconStyle = {{ tintColor:'#376092'}}/>
           <Scene key="typeBrocante"
             component={typeBrocante}

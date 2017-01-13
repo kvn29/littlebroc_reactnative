@@ -38,7 +38,11 @@ class Navigator_search extends Component {
       <Router titleStyle={{color:'#376092'}} >
         <Scene key="root" tabs={false}>
           <Scene key="announce" component={announce} title="Annonces" />
-          <Scene key="search" component={search} title="Resultat de recherche" initial={true} hideTabBar={true}/>
+          <Scene key="search"
+            component={search}
+            title="Resultat de recherche"
+            initial={true}
+          />
           <Scene key="categories" component={categories} title="Liste de categorie"/>
           <Scene key="typeBrocante" component={typeBrocante} title ="Types de brocante"/>
         </Scene>
