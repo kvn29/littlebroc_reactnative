@@ -64,7 +64,6 @@ class search extends Component {
         annonces: json,
         showLoadingMessage: false
       });
-      console.log(json);
     });
   }
 
@@ -78,7 +77,7 @@ class search extends Component {
           <Text style={styles.loadingMessageText}>Chargement en cours</Text>
         </View>);
     } else {
-      loadingMessage = null;
+      loadingMessage = <GridAnnounce annonces={this.state.annonces}/>;
     }
     // Fin définition du message de chargement
 
@@ -86,7 +85,7 @@ class search extends Component {
       <View style={{paddingTop: 62}}>
         <ScrollView style={{backgroundColor:'white',height:Dimensions.get('window').height-117}} automaticallyAdjustContentInsets={true}>
           {loadingMessage}
-          <GridAnnounce annonces={this.state.annonces}/>
+
         </ScrollView>
       </View>
     )
