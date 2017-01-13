@@ -4,7 +4,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Navigator
+  Navigator,
+  TouchableHighlight
 } from 'react-native';
 import {
   Container,
@@ -17,14 +18,13 @@ import {
   Icon,
   Badge
   } from 'native-base';
-import { Router, Scene } from 'react-native-router-flux';
+import { Router, Scene, Actions } from 'react-native-router-flux';
 import Dimensions from 'Dimensions';
 
-import listAnnounces from './ui/listAnnounces.js'
-import announce from './ui/announce.js'
+var EXCHANGE = require('./data/exchange.js');
+
 import search from './ui/search.js'
-import categories from './ui/categories.js'
-import typeBrocante from './ui/typeBrocante.js'
+import searchengine from './ui/searchengine.js'
 
 class Navigator_search extends Component {
   constructor(props) {
@@ -34,20 +34,48 @@ class Navigator_search extends Component {
     }
   }
   render() {
+
+    // Bouton (loupe) Search
+    const searchButton = (
+      <TouchableHighlight onPress={() => Actions.searchengine() }style={Styles.searchScene_iconRight}>
+        <View><Icon name="ios-search" size={40} /></View>
+      </TouchableHighlight>);
+    // Fin Bouton loupe
+
     return (
       <Router titleStyle={{color:'#376092'}} >
         <Scene key="root" tabs={false}>
-          <Scene key="announce" component={announce} title="Annonces" />
           <Scene key="search"
             component={search}
-            title="Resultat de recherche"
+            titleStyle={{fontWeight: 'bold'}}
+            title="Les annonces"
             initial={true}
+            renderRightButton={() => searchButton}
           />
-          <Scene key="categories" component={categories} title="Liste de categorie"/>
-          <Scene key="typeBrocante" component={typeBrocante} title ="Types de brocante"/>
+          <Scene key="searchengine"
+            component={searchengine}
+            title="Rechercher"
+            titleStyle={{fontWeight: 'bold'}}
+            onBack={() => {Actions.pop()}}
+            hideBackImage={true}
+            backTitle="Annuler"
+            rightTitle="OK" onRight={() => {}}
+            rightButtonTextStyle = {{color: '#376092'}}
+            backButtonTextStyle = {{color: '#376092'}}/>
         </Scene>
       </Router>
     )
   }
 }
+
+// Définition du style
+const Styles = StyleSheet.create({
+  searchScene_iconRight: {
+    width:40,
+    height:40,
+    right: -5,
+    top: 3,
+    position: 'absolute'
+  }
+});
 module.exports = Navigator_search;

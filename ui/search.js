@@ -27,7 +27,7 @@ import {
   Radio
   } from 'native-base';
 import Dimensions from 'Dimensions';
-
+var EXCHANGE = require('../data/exchange.js');
 import { Actions } from 'react-native-router-flux';
 
 class search extends Component {
@@ -40,6 +40,11 @@ class search extends Component {
     this.state = {
       showLoadingMessage: true,
       annonces: []
+    };
+
+    // Ici on défini la fonction qui au clic sur la loupe, montrer la vue moteur de recherche
+    EXCHANGE.showSearchEngine = function() {
+      Actions.announce();
     };
   }
 
