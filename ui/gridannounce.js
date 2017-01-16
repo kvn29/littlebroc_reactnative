@@ -7,17 +7,6 @@ import {
 } from 'react-native';
 import { List, ListItem, Thumbnail, InputGroup, Icon, Input, Grid, Col, Picker, Card, CardItem, Row } from 'native-base';
 
-function ColonneGauche(props) {
-  console.log("ici", props.annonces);
-  props.annonces.map((annonce) => {
-      console.log('LA ?');
-      return (
-        <Row style={{backgroundColor: 'green'}}>
-          <Text>aa</Text>
-        </Row>
-      )
-  });
-}
 
 class GridAnnounce extends Component {
   constructor(props) {
@@ -44,18 +33,6 @@ class GridAnnounce extends Component {
     };
   }
 
-  //
-  // ColonneDroite() {
-  //   this.state.annonces.map((annonce) => {
-  //     if(annonce.position % 2 != 0) {
-  //       return (
-  //         <Row style={{backgroundColor: 'green'}}>
-  //           <Text>{annonce.position}</Text>
-  //         </Row>
-  //       )
-  //     }
-  //   });
-  // }
 
 
   render() {
