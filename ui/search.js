@@ -33,6 +33,7 @@ import GridAnnounce from './gridannounce.js';
 var EXCHANGE = require('../data/exchange.js');
 import { Actions } from 'react-native-router-flux';
 
+var loadMoreViewAntiFlood = false;
 class search extends Component {
 
   constructor(props) {
@@ -43,7 +44,8 @@ class search extends Component {
 
     this.state = {
       showLoadingMessage: true,
-      annonces: []
+      annonces: [],
+      startatindex: 0
     };
 
     // Ici on défini la fonction qui au clic sur la loupe, montrer la vue moteur de recherche
@@ -58,14 +60,19 @@ class search extends Component {
     console.log('Nouveaux critères de recherche :', nextProps.criteresDeRecherche);
   }
 
-  componentWillMount() {
-    fetch('https://littlebrocapi.herokuapp.com/api/annonce?limit=30&startAtIndex=0').then((response) => response.json()).then((json) => {
+  loadMore(startIndex) {
+    console.log('LOAD MORE', startIndex);
+    fetch('https://littlebrocapi.herokuapp.com/api/annonce?limit=8&startatindex='+startIndex).then((response) => response.json()).then((json) => {
       this.setState({
         annonces: json,
         showLoadingMessage: false
       });
-      console.log(this.state.annonces);
+
     });
+  }
+
+  componentWillMount() {
+    this.loadMore(this.state.startIndex);
   }
 
   render() {
@@ -84,7 +91,31 @@ class search extends Component {
 
     return (
       <View style={{paddingTop: 62}}>
-        <ScrollView style={{backgroundColor:'white',height:Dimensions.get('window').height-117}} automaticallyAdjustContentInsets={true}>
+        <ScrollView
+          style={{backgroundColor:'white',height:Dimensions.get('window').height-117}}
+          bounces={true}
+          automaticallyAdjustContentInsets={true}
+          onScroll={(e)=>{
+              var windowHeight = Dimensions.get('window').height,
+                  height = e.nativeEvent.contentSize.height,
+                  offset = e.nativeEvent.contentOffset.y;
+                  // console.log('offset', offset, 'height', height, 'window height', Dimensions.get('window').height);
+
+              if( windowHeight + offset >= height ){
+                  if(!loadMoreViewAntiFlood) {
+                    console.log('ici');
+                    loadMoreViewAntiFlood = true;
+                    this.setState({
+                      startatindex: 8
+                    }, () => {
+                      this.loadMore(this.state.startatindex);
+                    });
+
+                  }
+                  // return;
+              }
+          }}
+          scrollEventThrottle={16}>
           {loadingMessage}
 
         </ScrollView>

@@ -42,7 +42,7 @@ class GridAnnounce extends Component {
           this.state.annoncesPaires.map(function(annonce, i){
           return (<Row key={i} style={{height:Dimensions.get('window').width/2,backgroundColor: 'white', marginBottom:1,marginRight:0.5}}>
           <Image source={{uri: annonce.photoUrl}} style={{ flex:1,justifyContent: 'center', alignItems:'center', width:null, height: null}}>
-            <View style={{backgroundColor: 'rgba(0,0,0,.28)', width: Dimensions.get('window').width/2, flex: 1, justifyContent: 'center', alignItems:'center'}}>
+            <View style={{backgroundColor: 'rgba(0,0,0,.5)', width: Dimensions.get('window').width/2, flex: 1, justifyContent: 'center', alignItems:'center'}}>
               <Text style={Styles.annonceTitle} ellipsizeMode={'tail'} numberOfLines={2}>{annonce.annonceTitle}</Text>
               <Text style={Styles.annoncePrice}>{annonce.annoncePrice} €</Text>
 
@@ -67,7 +67,7 @@ class GridAnnounce extends Component {
             console.log(annonce);
             return (<Row key={i} style={{height:Dimensions.get('window').width/2,backgroundColor: 'white', marginBottom:1,marginLeft:0.5}}>
             <Image source={{uri: annonce.photoUrl}} style={{ flex:1,justifyContent: 'center', alignItems:'center', width:null, height: null}}>
-              <View style={{backgroundColor: 'rgba(0,0,0,.28)', width: Dimensions.get('window').width/2, flex: 1, justifyContent: 'center', alignItems:'center'}}>
+              <View style={{backgroundColor: 'rgba(0,0,0,.5)', width: Dimensions.get('window').width/2, flex: 1, justifyContent: 'center', alignItems:'center'}}>
 
                 <Text style={Styles.annonceTitle} ellipsizeMode={'tail'} numberOfLines={2}>{annonce.annonceTitle}</Text>
                 <Text style={Styles.annoncePrice}>{annonce.annoncePrice} €</Text>
