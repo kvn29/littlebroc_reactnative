@@ -3,7 +3,8 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TextInput
 } from 'react-native';
 
 // import {
@@ -49,6 +50,9 @@ class searchengine extends Component {
     return (
       <View style={{paddingTop: 62}}>
         <Text>aa</Text>
+          <TextInput
+          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+        />
       </View>
     )
   }

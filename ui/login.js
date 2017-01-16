@@ -54,8 +54,8 @@ class login extends Component {
     return (
       <Content theme={myTheme}>
       <View style={{marginTop:80}}>
-        <TextInput onChangeText={(user) => this.setState({user})} value={this.state.email} placeholder='Votre email' />
-        <TextInput onChangeText={(password) => this.setState({password})} value={this.state.password} placeholder='Votre mot de passe' />
+        <TextInput onChangeText={(user) => this.setState({user})} value={this.state.email} placeholder='Votre email' style={{height:40}} />
+        <TextInput onChangeText={(password) => this.setState({password})} value={this.state.password} placeholder='Votre mot de passe' style={{height:40}}/>
         <Button title="Valider" onPress={() => this.submitCredentials(this.state)} />
         <InputGroup borderType='regular' iconRight disabled>
           <Icon name='ios-arrow-forward' onPress={Actions.createMember}/>

@@ -36,17 +36,23 @@ class createMember extends Component {
 
   render() {
       return (
-        <View style={{marginTop:55}}>
-          <TextInput onChangeText={(pseudo) => this.setState({pseudo})} value={this.state.pseudo} placeholder='Votre pseudo' />
-          <TextInput onChangeText={(firstName) => this.setState({firstName})} value={this.state.firstName} placeholder='Votre prénom' />
-          <TextInput onChangeText={(lastName) => this.setState({lastName})} value={this.state.lastName} placeholder='Votre nom' />
-          <TextInput onChangeText={(email) => this.setState({email})} value={this.state.email} placeholder='Votre e-mail' />
-          <TextInput onChangeText={(phone) => this.setState({phone})} value={this.state.phone} placeholder='Votre numéro de téléphone' />
-          <TextInput onChangeText={(password) => this.setState({password})} value={this.state.password} placeholder='Votre mot de passe' />
+        <View style={{marginTop:62}}>
+          <TextInput onChangeText={(pseudo) => this.setState({pseudo})} value={this.state.pseudo} placeholder='Votre pseudo' style={Styles.inputs}/>
+          <TextInput onChangeText={(firstName) => this.setState({firstName})} value={this.state.firstName} placeholder='Votre prénom' style={Styles.inputs}/>
+          <TextInput onChangeText={(lastName) => this.setState({lastName})} value={this.state.lastName} placeholder='Votre nom' style={Styles.inputs}/>
+          <TextInput onChangeText={(email) => this.setState({email})} value={this.state.email} placeholder='Votre e-mail' style={Styles.inputs}/>
+          <TextInput onChangeText={(phone) => this.setState({phone})} value={this.state.phone} placeholder='Votre numéro de téléphone' style={Styles.inputs}/>
+          <TextInput onChangeText={(password) => this.setState({password})} value={this.state.password} placeholder='Votre mot de passe' style={Styles.inputs}/>
           <Button title="Valider" onPress={() => this.newUser(this.state)} />
         </View>
       )
   }
 }
+
+const Styles = StyleSheet.create({
+    inputs: {
+      height: 40
+    }
+});
 
 module.exports = createMember;
