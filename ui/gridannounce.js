@@ -3,21 +3,11 @@ import {
   AppRegistry,
   StyleSheet,
   View,
-  Text
+  Text,
+  Image
 } from 'react-native';
 import { List, ListItem, Thumbnail, InputGroup, Icon, Input, Grid, Col, Picker, Card, CardItem, Row } from 'native-base';
-
-function ColonneGauche(props) {
-  console.log("ici", props.annonces);
-  props.annonces.map((annonce) => {
-      console.log('LA ?');
-      return (
-        <Row style={{backgroundColor: 'green'}}>
-          <Text>aa</Text>
-        </Row>
-      )
-  });
-}
+import Dimensions from 'Dimensions';
 
 class GridAnnounce extends Component {
   constructor(props) {
@@ -44,38 +34,91 @@ class GridAnnounce extends Component {
     };
   }
 
-  //
-  // ColonneDroite() {
-  //   this.state.annonces.map((annonce) => {
-  //     if(annonce.position % 2 != 0) {
-  //       return (
-  //         <Row style={{backgroundColor: 'green'}}>
-  //           <Text>{annonce.position}</Text>
-  //         </Row>
-  //       )
-  //     }
-  //   });
-  // }
-
 
   render() {
     return (<Grid>
       <Col>
         {
           this.state.annoncesPaires.map(function(annonce, i){
-            console.log(annonce);
-          return <Row key={i} style={{height:100,backgroundColor: 'red', marginBottom:2,marginRight:1}}><Text>{annonce.annonceTitle}</Text></Row>;
+          return (<Row key={i} style={{height:Dimensions.get('window').width/2,backgroundColor: 'white', marginBottom:2,marginRight:1}}>
+          <Image source={{uri: annonce.photoUrl}} style={{ flex:1,justifyContent: 'center', alignItems:'center', width:null, height: null}}>
+            <View style={{backgroundColor: 'rgba(0,0,0,.4)', width: Dimensions.get('window').width/2, flex: 1, justifyContent: 'center', alignItems:'center'}}>
+              <Text style={Styles.annonceTitle} ellipsizeMode={'tail'} numberOfLines={2}>{annonce.annonceTitle}</Text>
+              <Text style={Styles.annoncePrice}>{annonce.annoncePrice} €</Text>
+
+              <View style={Styles.iconeLike}>
+                <Icon name='ios-thumbs-up' style={{color:'white', fontSize:20, marginRight: 5}} />
+                <Text style={{color:'white', fontSize: 15}}>{annonce.like}</Text>
+              </View>
+
+              <View style={Styles.iconeVue}>
+                <Text style={{color:'white', fontSize: 15}}>{annonce.views}</Text>
+                <Icon name='ios-eye' style={{color:'white', fontSize:25, marginLeft: 5}} />
+              </View>
+
+            </View>
+          </Image>
+              </Row>);
           })}
       </Col>
       <Col>
         {
           this.state.annoncesImpaires.map(function(annonce, i){
             console.log(annonce);
-          return <Row key={i} style={{height:100,backgroundColor: 'green', marginBottom:2,marginLeft:1}}><Text>{annonce.annonceTitle}</Text></Row>;
+            return (<Row key={i} style={{height:Dimensions.get('window').width/2,backgroundColor: 'white', marginBottom:2,marginRight:1}}>
+            <Image source={{uri: annonce.photoUrl}} style={{ flex:1,justifyContent: 'center', alignItems:'center', width:null, height: null}}>
+              <View style={{backgroundColor: 'rgba(0,0,0,.4)', width: Dimensions.get('window').width/2, flex: 1, justifyContent: 'center', alignItems:'center'}}>
+                <Text style={Styles.annonceTitle} ellipsizeMode={'tail'} numberOfLines={2}>{annonce.annonceTitle}</Text>
+                <Text style={Styles.annoncePrice}>{annonce.annoncePrice} €</Text>
+
+                <View style={Styles.iconeLike}>
+                  <Icon name='ios-thumbs-up' style={{color:'white', fontSize:20, marginRight: 5}} />
+                  <Text style={{color:'white', fontSize: 15}}>{annonce.like}</Text>
+                </View>
+
+                <View style={Styles.iconeVue}>
+                  <Text style={{color:'white', fontSize: 15}}>{annonce.views}</Text>
+                  <Icon name='ios-eye' style={{color:'white', fontSize:25, marginLeft: 5}} />
+                </View>
+
+              </View>
+            </Image>
+                </Row>);
           })}
       </Col>
     </Grid>);
   }
 }
+
+const Styles = StyleSheet.create({
+  annonceTitle: {
+    fontSize: 22,
+    padding:25,
+    color:'white',
+    textAlign: 'center'
+  },
+  annoncePrice: {
+    marginTop: 20,
+    color:'white',
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+  iconeLike: {
+    position: 'absolute',
+    bottom: 5,
+    left:8,
+    flexDirection:'row',
+    flexWrap:'wrap',
+    opacity: 0.85
+  },
+  iconeVue: {
+    position: 'absolute',
+    bottom: 0,
+    right:8,
+    flexDirection:'row',
+    flexWrap:'wrap',
+    opacity: 0.85
+  }
+});
 
 module.exports = GridAnnounce;

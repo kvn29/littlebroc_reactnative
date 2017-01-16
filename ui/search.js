@@ -59,11 +59,12 @@ class search extends Component {
   }
 
   componentWillMount() {
-    fetch('https://littlebrocapi.herokuapp.com/api/annonce').then((response) => response.json()).then((json) => {
+    fetch('https://littlebrocapi.herokuapp.com/api/annonce?limit=30&startAtIndex=0').then((response) => response.json()).then((json) => {
       this.setState({
         annonces: json,
         showLoadingMessage: false
       });
+      console.log(this.state.annonces);
     });
   }
 
