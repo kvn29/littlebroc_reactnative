@@ -34,7 +34,13 @@ class searchengine extends Component {
 
     EXCHANGE.backSearchEngineToSearch = function () {
       // Renvoi des critères de recherche à la vue précédente (Search (Résultat de recherche))
-      Actions.pop({refresh: {criteresDeRecherche : "a"}})
+      Actions.pop({
+        refresh: {
+          newSearchRequest : {
+            titre: "jeu"
+          }
+        }
+      });
     }
 
   }

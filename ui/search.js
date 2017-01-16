@@ -46,7 +46,12 @@ class search extends Component {
       showLoadingMessage: true,
       annonces: [],
       startatindex: 0,
-      key: 0 // <- On créé un élément avec valeur à 0, il va servir a actualisé le composant GridAnnounce
+      key: 0, // <- On créé un élément avec valeur à 0, il va servir a actualisé le composant GridAnnounce
+      searchEngine: {
+        titre: "",
+        categorie: "",
+        idbroc: ""
+      }
     };
 
     // Ici on défini la fonction qui au clic sur la loupe, montrer la vue moteur de recherche
@@ -58,14 +63,29 @@ class search extends Component {
   componentWillReceiveProps(nextProps) {
     // C'est ici que sont recu les nouvelles données provenant de la vue moteur de recherche
     // Ici on recoit les critères de recherche pour une nouvelle recherche
-    console.log('Nouveaux critères de recherche :', nextProps.criteresDeRecherche);
+    let newSearchRequest = nextProps.newSearchRequest;
+
+    this.setState({
+      startatindex: 0,
+      annonces: [],
+      searchEngine: {
+        titre: typeof newSearchRequest.titre === 'undefined' ? "" : newSearchRequest.titre,
+        categorie: typeof newSearchRequest.categorie === 'undefined' ? "" : newSearchRequest.categorie
+      }
+    }, () => {
+      this.loadMore(0);
+    });
+    console.log('Nouveaux critères de recherche :', nextProps.newSearchRequest);
   }
 
   loadMore(startIndex) {
-    console.log('LOAD MORE', startIndex);
-    fetch('https://littlebrocapi.herokuapp.com/api/annonce?limit=8&startatindex='+startIndex)
+    fetch("https://littlebrocapi.herokuapp.com/api/annonce?limit=8"+
+      "&startatindex="+startIndex+
+      "&titre="+this.state.searchEngine.titre+
+      "&categorie="+this.state.searchEngine.categorie)
     .then((response) => response.json())
     .then((json) => {
+      // console.log(json);
       let copyannonces = this.state.annonces.slice();
       copyannonces = copyannonces.concat(json);
 
@@ -82,7 +102,7 @@ class search extends Component {
 
   componentWillMount() {
     // Au démarrage de la vue, la valeur passé est 0
-    this.loadMore(this.state.startIndex);
+    this.loadMore(this.state.startatindex);
   }
 
   render() {
