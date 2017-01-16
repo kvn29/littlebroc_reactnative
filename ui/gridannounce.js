@@ -40,9 +40,9 @@ class GridAnnounce extends Component {
       <Col>
         {
           this.state.annoncesPaires.map(function(annonce, i){
-          return (<Row key={i} style={{height:Dimensions.get('window').width/2,backgroundColor: 'white', marginBottom:2,marginRight:1}}>
+          return (<Row key={i} style={{height:Dimensions.get('window').width/2,backgroundColor: 'white', marginBottom:1,marginRight:0.5}}>
           <Image source={{uri: annonce.photoUrl}} style={{ flex:1,justifyContent: 'center', alignItems:'center', width:null, height: null}}>
-            <View style={{backgroundColor: 'rgba(0,0,0,.4)', width: Dimensions.get('window').width/2, flex: 1, justifyContent: 'center', alignItems:'center'}}>
+            <View style={{backgroundColor: 'rgba(0,0,0,.28)', width: Dimensions.get('window').width/2, flex: 1, justifyContent: 'center', alignItems:'center'}}>
               <Text style={Styles.annonceTitle} ellipsizeMode={'tail'} numberOfLines={2}>{annonce.annonceTitle}</Text>
               <Text style={Styles.annoncePrice}>{annonce.annoncePrice} €</Text>
 
@@ -65,9 +65,10 @@ class GridAnnounce extends Component {
         {
           this.state.annoncesImpaires.map(function(annonce, i){
             console.log(annonce);
-            return (<Row key={i} style={{height:Dimensions.get('window').width/2,backgroundColor: 'white', marginBottom:2,marginRight:1}}>
+            return (<Row key={i} style={{height:Dimensions.get('window').width/2,backgroundColor: 'white', marginBottom:1,marginLeft:0.5}}>
             <Image source={{uri: annonce.photoUrl}} style={{ flex:1,justifyContent: 'center', alignItems:'center', width:null, height: null}}>
-              <View style={{backgroundColor: 'rgba(0,0,0,.4)', width: Dimensions.get('window').width/2, flex: 1, justifyContent: 'center', alignItems:'center'}}>
+              <View style={{backgroundColor: 'rgba(0,0,0,.28)', width: Dimensions.get('window').width/2, flex: 1, justifyContent: 'center', alignItems:'center'}}>
+
                 <Text style={Styles.annonceTitle} ellipsizeMode={'tail'} numberOfLines={2}>{annonce.annonceTitle}</Text>
                 <Text style={Styles.annoncePrice}>{annonce.annoncePrice} €</Text>
 
@@ -98,10 +99,14 @@ const Styles = StyleSheet.create({
     textAlign: 'center'
   },
   annoncePrice: {
-    marginTop: 20,
     color:'white',
     fontSize: 20,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    position: 'absolute',
+    bottom: 30,
+    left:0,
+    textAlign: 'center',
+    width: Dimensions.get('window').width/2
   },
   iconeLike: {
     position: 'absolute',
