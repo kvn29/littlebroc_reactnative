@@ -9,7 +9,6 @@ import {
 import { List, ListItem, Thumbnail, InputGroup, Icon, Input, Grid, Col, Picker, Card, CardItem, Row } from 'native-base';
 import Dimensions from 'Dimensions';
 
-
 class GridAnnounce extends Component {
   constructor(props) {
     super(props);
@@ -64,7 +63,6 @@ class GridAnnounce extends Component {
       <Col>
         {
           this.state.annoncesImpaires.map(function(annonce, i){
-            console.log(annonce);
             return (<Row key={i} style={{height:Dimensions.get('window').width/2,backgroundColor: 'white', marginBottom:1,marginLeft:0.5}}>
             <Image source={{uri: annonce.photoUrl}} style={{ flex:1,justifyContent: 'center', alignItems:'center', width:null, height: null}}>
               <View style={{backgroundColor: 'rgba(0,0,0,.5)', width: Dimensions.get('window').width/2, flex: 1, justifyContent: 'center', alignItems:'center'}}>

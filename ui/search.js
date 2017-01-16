@@ -45,7 +45,8 @@ class search extends Component {
     this.state = {
       showLoadingMessage: true,
       annonces: [],
-      startatindex: 0
+      startatindex: 0,
+      key: 0 // <- On créé un élément avec valeur à 0, il va servir a actualisé le composant GridAnnounce
     };
 
     // Ici on défini la fonction qui au clic sur la loupe, montrer la vue moteur de recherche
@@ -62,20 +63,30 @@ class search extends Component {
 
   loadMore(startIndex) {
     console.log('LOAD MORE', startIndex);
-    fetch('https://littlebrocapi.herokuapp.com/api/annonce?limit=8&startatindex='+startIndex).then((response) => response.json()).then((json) => {
-      this.setState({
-        annonces: json,
-        showLoadingMessage: false
-      });
+    fetch('https://littlebrocapi.herokuapp.com/api/annonce?limit=8&startatindex='+startIndex)
+    .then((response) => response.json())
+    .then((json) => {
+      let copyannonces = this.state.annonces.slice();
+      copyannonces = copyannonces.concat(json);
 
+      this.setState({
+        annonces: copyannonces,
+        showLoadingMessage: false,
+        key: Math.random() // <- Ici en changeant la valeur de key on force React A reafficher la grid, mais avec les données en plus
+      }, () => {
+        loadMoreViewAntiFlood = false;
+        this.forceUpdate();
+      });
     });
   }
 
   componentWillMount() {
+    // Au démarrage de la vue, la valeur passé est 0
     this.loadMore(this.state.startIndex);
   }
 
   render() {
+
     // Définition du message de chargement
     let loadingMessage = null;
     if (this.state.showLoadingMessage) {
@@ -85,9 +96,11 @@ class search extends Component {
           <Text style={styles.loadingMessageText}>Chargement en cours</Text>
         </View>);
     } else {
-      loadingMessage = <GridAnnounce annonces={this.state.annonces}/>;
+        loadingMessage = <GridAnnounce annonces={this.state.annonces} key={this.state.key}/>;
     }
     // Fin définition du message de chargement
+
+
 
     return (
       <View style={{paddingTop: 62}}>
@@ -99,30 +112,28 @@ class search extends Component {
               var windowHeight = Dimensions.get('window').height,
                   height = e.nativeEvent.contentSize.height,
                   offset = e.nativeEvent.contentOffset.y;
-                  // console.log('offset', offset, 'height', height, 'window height', Dimensions.get('window').height);
 
               if( windowHeight + offset >= height ){
                   if(!loadMoreViewAntiFlood) {
-                    console.log('ici');
                     loadMoreViewAntiFlood = true;
                     this.setState({
-                      startatindex: 8
+                      showLoadingMessage: false,
+                      startatindex: this.state.startatindex+8
                     }, () => {
                       this.loadMore(this.state.startatindex);
                     });
-
                   }
-                  // return;
               }
           }}
           scrollEventThrottle={16}>
           {loadingMessage}
-
         </ScrollView>
       </View>
     )
   }
 }
+
+
 const styles = StyleSheet.create({
   loadingMessageText: {
     textAlign:'center',
