@@ -21,6 +21,7 @@ import {
 import { Router, Scene, Actions } from 'react-native-router-flux';
 var EXCHANGE = require('./data/exchange.js');
 import announce from './ui/announce.js'
+import newAnnounce from './ui/newAnnounce.js'
 import categories from './ui/categories.js'
 import login from './ui/login.js'
 import createMember from './ui/createMember.js'
@@ -39,7 +40,7 @@ class Navigator_add extends Component {
     return (
       <Router titleStyle={{color:'#376092'}}>
         <Scene key="root">
-          <Scene key="announce" component={announce} title="Annonce" initial={true} titleStyle={{fontWeight: 'bold'}} />
+          <Scene key="newAnnounce" component={newAnnounce} title="Créer une Annonce" initial={true} titleStyle={{fontWeight: 'bold'}} />
           <Scene key="categories"
             component={categories}
             title="Catégories"
