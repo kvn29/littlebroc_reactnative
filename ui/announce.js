@@ -7,7 +7,8 @@ import {
   View,
   Navigator,
   Image ,
-  Platform
+  Platform,
+  ImagePickerIOS
 } from 'react-native';
 import {
   Container,
@@ -25,6 +26,7 @@ import {
 import { Actions } from 'react-native-router-flux';
 import myTheme from '../Themes/myTheme';
 var EXCHANGE = require('../data/exchange.js');
+var ImagePicker = require('react-native-image-picker');
 class announce extends Component {
 
   constructor(props) {
@@ -54,6 +56,15 @@ class announce extends Component {
       });
     });
   }
+  testest() {
+    if (Platform.OS === 'ios') {
+      ImagePickerIOS.openSelectDialog({}, imageUri => {
+
+      }, error => console.error(error));
+    }
+    else
+      ImagePicker.showImagePicker();
+  }
 
   logout(){
       AsyncStorage.multiRemove(['userId', 'token']);
@@ -64,6 +75,7 @@ class announce extends Component {
     return (//{title: 'Second Scene', index: 1}`
     <Content theme={myTheme} style={Styles.form}>
     <View>
+      <Button onPress={this.testest.bind(this)}>a</Button>
       <InputGroup borderType='regular' iconRight disabled>
         <Icon name='ios-arrow-forward' onPress={Actions.categories}/>
         <Input placeholder='Catégories' value={this.state.selectedCategory}/>
@@ -73,7 +85,7 @@ class announce extends Component {
         <Icon name='logo-euro'/>
         <Input placeholder={this.state.annonce.annoncePrice} />
       </InputGroup>
-      <InputGroup borderType='regular' iconRight disabled>
+      <InputGroup borderType='regular' iconRight disabled >
         <Icon name='ios-checkbox-outline'/>
         <Input placeholder='Négociable' />
       </InputGroup>
