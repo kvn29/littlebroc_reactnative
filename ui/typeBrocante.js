@@ -52,6 +52,7 @@ class typeBrocante extends Component {
     }
   }
 
+
   componentDidMount() {
     var data = test.typebrocante;
 
@@ -68,7 +69,7 @@ class typeBrocante extends Component {
   componentWillMount() {
     AsyncStorage.getItem('token').then((token) => {
       if(!token){
-        Actions.login();
+        Actions.login;
       }
     })
   }

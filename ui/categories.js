@@ -92,7 +92,7 @@ class categories extends Component {
   componentWillMount() {
     AsyncStorage.getItem('token').then((token) => {
       if(!token){
-        Actions.login();
+        Actions.login;
       }
     })
   }

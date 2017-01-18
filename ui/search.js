@@ -70,7 +70,8 @@ class search extends Component {
       annonces: [],
       searchEngine: {
         titre: typeof newSearchRequest.titre === 'undefined' ? "" : newSearchRequest.titre,
-        categorie: typeof newSearchRequest.categorie === 'undefined' ? "" : newSearchRequest.categorie
+        categorie: typeof newSearchRequest.categorie === 'undefined' ? "" : newSearchRequest.categorie,
+        brocante: typeof newSearchRequest.brocante === 'undefined' ? "" : newSearchRequest.brocante
       }
     }, () => {
       this.loadMore(0);
