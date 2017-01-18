@@ -18,6 +18,8 @@ import {
   Footer,
   FooterTab,
   Button,
+  List,
+  ListItem,
   Icon,
   Badge,
   InputGroup,
@@ -75,6 +77,7 @@ class announce extends Component {
     return (//{title: 'Second Scene', index: 1}`
     <Content theme={myTheme} style={Styles.form}>
     <View>
+      <List>
       <Button onPress={this.testest.bind(this)}>a</Button>
       <InputGroup borderType='regular' iconRight disabled>
         <Icon name='ios-arrow-forward' onPress={Actions.categories}/>
@@ -112,6 +115,7 @@ class announce extends Component {
         <Icon name='ios-arrow-forward' onPress={() => this.logout()}/>
         <Input placeholder='Déconnexion' />
       </InputGroup>
+    </List>
     </View>
   </Content>
     )
