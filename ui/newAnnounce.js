@@ -14,6 +14,7 @@ import {
   Container,
   Header,
   Title,
+  Radio,
   Content,
   Footer,
   FooterTab,
@@ -26,7 +27,6 @@ import {
   Input
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-import CheckBox from 'react-native-checkbox';
 import myTheme from '../Themes/myTheme';
 var EXCHANGE = require('../data/exchange.js');
 var ImagePicker = require('react-native-image-picker');
@@ -37,7 +37,8 @@ class newAnnounce extends Component {
 
     this.state = {
       annonce: {},
-      texte: ""
+      texte: "",
+      checkbox1:false
     };
   }
   componentWillReceiveProps(nextProps) {
@@ -69,6 +70,12 @@ class newAnnounce extends Component {
     else
       ImagePicker.showImagePicker();
   }
+  toggleSwitch(){
+    this.setState({
+      checkbox1: !this.state.checkbox1
+    })
+
+  }
 
 
   logout(){
@@ -79,8 +86,8 @@ class newAnnounce extends Component {
   render() {
     return (//{title: 'Second Scene', index: 1}`
     <Content theme={myTheme}>
-    <View>
-      <List style={{}}>
+    <View style={Styles.form}>
+      <List>
         <ListItem>
             <Input inlineLabel placeholder="Titre annonce" onChangeText={(texte) => this.setState({texte})} value={this.state.texte} />
         </ListItem>
@@ -100,33 +107,17 @@ class newAnnounce extends Component {
         <ListItem>
             <Button
              onPress={this.testest.bind(this)}
-             style={{width:200, height:200}}><Icon name="ios-image" style={{fontSize:100, marginTop:20}}/></Button>
+             style={{width:100, height:100 }}><Icon name="ios-image"/></Button>
         </ListItem>
 
         <ListItem iconRight disabled>
-            <InputGroup borderType='underline' iconRight disabled>
               <Icon name='logo-euro'/>
               <Input inlineLabel placeholder="Prix" onChangeText={(texte) => this.setState({texte})} value={this.state.texte}/>
-            </InputGroup>
         </ListItem>
 
-        <ListItem>
-            <InputGroup borderType='underline' iconRight disabled>
-              <CheckBox
-                label="Négociable"
-                checked={true}
-                onChange={(checked) => console.log('I am checked', checked)}/>
-            </InputGroup>
-        </ListItem>
-
-
-
-        <ListItem iconRight disabled>
-              <Icon name='ios-locate-outline' />
-              <Input inlineLabel placeholder="Nom Brocante"
-              onChangeText={(texte) =>
-              this.setState({texte})}
-              value={this.state.texte}/>
+        <ListItem onPress={() => this.toggleSwitch()}>
+          <Radio selected={this.state.checkbox1} onPress={() => this.toggleSwitch()} />
+          <Text style={{color:'#376092', fontStyle:'italic'}}>Négociable</Text>
         </ListItem>
 
         <ListItem>
@@ -136,29 +127,30 @@ class newAnnounce extends Component {
           </InputGroup>
         </ListItem>
 
-
         <ListItem iconRight disabled>
-              <Icon name='ios-locate-outline'/>
+              <Icon name='ios-locate-outline' />
+              <Input inlineLabel placeholder="Nom Brocante"
+              onChangeText={(texte) =>
+              this.setState({texte})}
+              value={this.state.texte}/>
               <Input inlineLabel placeholder="Adresse"
               onChangeText={(texte) =>
               this.setState({texte})}
               value={this.state.texte}/>
-        </ListItem>
-        <ListItem iconRight disabled>
-            <Icon name='ios-locate-outline'/>
-            <Input inlineLabel placeholder="CP et Ville"
-            onChangeText={(texte) =>
-            this.setState({texte})}
-            value={this.state.texte}/>
+              <Input inlineLabel placeholder="CP et Ville"
+              onChangeText={(texte) =>
+              this.setState({texte})}
+              value={this.state.texte}/>
         </ListItem>
 
           <ListItem iconRight disabled>
                 <Icon name='ios-calendar'/>
-                <Input inlineLabel placeholder="Date"
+                <Input inlineLabel placeholder="Date de la Brocante"
                 onChangeText={(texte) =>
                 this.setState({texte})}
                 value={this.state.texte}/>
           </ListItem>
+          <Button style={{marginTop: 20}}>Valider</Button>
 
       </List>
     </View>

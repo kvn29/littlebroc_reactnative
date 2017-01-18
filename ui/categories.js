@@ -106,7 +106,6 @@ class categories extends Component {
           <View>
             <List>
               <ListItem onPress={() => this.toggleSwitch(item.name)}>
-                {/*<CheckBox checked={item.checked} onPress={() => this.toggleSwitch(item.name)} />*/}
                 <Radio selected={item.checked} onPress={() => this.toggleSwitch(item.name)}/>
                 <Text style={{color:'#376092'}}>{item.name}</Text>
               </ListItem>
